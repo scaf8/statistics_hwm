@@ -5,27 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statistics 2024/25 - Homework</title>
     <style>
+        /* Font Google Import */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 40px;
-            background-color: #f9f9f9;
+            background-color: #f0f4f8;
+            color: #2c3e50;
         }
         h1, h2 {
-            color: #333;
+            color: #34495e;
+            font-weight: 700;
         }
         .student-info {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             font-size: 1.2em;
-            color: #555;
+            color: #7f8c8d;
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .homework-list {
+            margin-top: 20px;
         }
         .homework-list a {
-            display: block;
+            display: inline-block;
+            padding: 12px 20px;
             margin: 10px 0;
-            color: #007bff;
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
             text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
         .homework-list a:hover {
-            text-decoration: underline;
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            body {
+                margin: 20px;
+            }
+            h1, h2 {
+                font-size: 1.5em;
+            }
+            .homework-list a {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
