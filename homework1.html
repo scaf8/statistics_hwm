@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2/dist/css/lightbox.min.css" rel="stylesheet">
     <title>Statistics - Homework 1</title>
     <style>
         /* Font Google Import */
@@ -38,6 +39,7 @@
             color: #34495e;
             font-weight: 700;
             text-align: center;
+            margin-top: 30px;
             margin-bottom: 30px;
         }
 
@@ -179,7 +181,6 @@
 
         <div class="index">
             <ul>
-                <li><a href="#theory">Go to Theory</a></li>
                 <li><a href="#practice">Go to Practice</a></li>
             </ul>
         </div>
@@ -220,8 +221,20 @@
                 <br>    
                 Understanding the distribution of data is crucial for determining appropriate statistical methods for analysis, estimating probabilities, and making predictions.
             </p>
+
+            <h4>1.4 Frequency</h4>
+            <p>
+                In statistics, the term frequency refers to the number of times a particular value, event, or category occurs in a dataset. Understanding frequency is fundamental for analyzing and interpreting data, as it helps identify patterns, trends, and distributions.
+                <br>
+                There are three main types of frequency:
+                <ul>
+                    <li>Absolute frequency: it just counts how many times a specific value occurs in a dataset.</li>
+                    <li>Relative frequency: expresses the frequency of a specific value or category as a proportion of the total number of observations in the dataset. It provides a way to understand how common or rare a value is compared to the entire dataset.</li>
+                    <li>Percentage frequency: is a way of expressing relative frequency as a percentage. It provides an intuitive understanding of how frequently a particular value occurs in relation to the total number of observations.</li>
+                </ul>
+            </p>
         
-            <h3>2. Notion of average, computational problems with the floating point representation and numerical solution</h3>
+            <h3>2. Notion of average, derivation, computational problems with the floating point representation and numerical solution</h3>
 
             <h4>2.1 Average</h4>
             <p>
@@ -234,19 +247,24 @@
                 where <strong>x₁, x₂, ..., xₙ</strong> are the individual data points, and <strong>n</strong> is the number of data points. The mean is highly sensitive to outliers, and extreme values can distort the average, leading to potential misinterpretations of the data.
             </p>
 
-            <h4>2.2 Computational Problems with Floating Point Representation</h4>
+            <h4>2.2 Derivation</h4>
+            <p>
+                In statistics, the term derivation generally refers to the process of deriving formulas, equations, or statistical measures from underlying principles, theories, or models. Derivation is crucial for understanding how various statistical methods and concepts are formulated and applied.
+            </p>
+
+            <h4>2.3 Computational Problems with Floating Point Representation</h4>
             <p>
                 While calculating the average might seem straightforward, there are several computational challenges when working with floating-point representation in computers. These challenges arise from the fact that floating-point numbers are only an approximation of real numbers, and this can introduce several types of errors.
             </p>
 
-            <h4>2.2.1 Numerical Stability</h4>
+            <h4>2.3.1 Numerical Stability</h4>
             <p>
                 Numerical stability refers to how errors in calculations propagate through an algorithm. A numerically stable algorithm produces results with minimal error, even when rounding errors or small perturbations in the input data occur. In the context of floating-point arithmetic, numerical stability is crucial because even small rounding errors can accumulate over many operations, leading to significant inaccuracies.
                 <br>
                 For example, summing a large number of floating-point numbers can introduce cumulative errors due to rounding at each step of the summation. Algorithms that are numerically unstable may produce large errors that grow exponentially with the number of operations performed.
             </p>
 
-            <h4>2.2.2 Errors</h4>
+            <h4>2.3.2 Errors</h4>
             <p>
                 Floating-point numbers represent real numbers with a finite number of binary digits, which limits the precision. This leads to two main types of errors:
             </p>
@@ -259,7 +277,7 @@
                 Rounding errors can accumulate over multiple operations, leading to a gradual degradation in precision. In the worst-case scenario, this can cause a significant loss of accuracy, especially in iterative processes where errors compound at each step.
             </p>
 
-            <h4>2.2.3 Catastrophic Cancellation</h4>
+            <h4>2.3.3 Catastrophic Cancellation</h4>
             <p>
                 Catastrophic cancellation occurs when subtracting two nearly equal floating-point numbers. This results in a significant loss of precision because the most significant digits cancel out, leaving only the less precise, smaller digits. The difference between the two numbers is much smaller than the original numbers themselves, but the floating-point representation limits the precision of this difference, leading to a large relative error.
             </p>
@@ -267,19 +285,19 @@
                 For example, if two numbers like 1.0000001 and 1.0000000 are subtracted, the resulting difference is 0.0000001. However, the floating-point representation may only store a few significant digits, which can result in a loss of information and significant rounding errors. Catastrophic cancellation is particularly problematic in calculations involving the difference of nearly equal numbers.
             </p>
 
-            <h4>2.3 Numerical Solutions</h4>
+            <h4>2.4 Numerical Solutions</h4>
             <p>
                 There are various numerical methods designed to reduce the impact of floating-point errors and improve computational accuracy. Two notable methods include the Kahan's Algorithm, which compensates for floating-point rounding errors, and recursive formulas for efficiently updating calculations like the mean in real-time.
             </p>
 
-            <h4>2.3.1 Kahan's Algorithm</h4>
+            <h4>2.4.1 Kahan's Algorithm</h4>
             <p>
                 The <strong>Kahan Summation Algorithm</strong>, proposed by computer scientist William Kahan, is a technique to improve the accuracy of floating-point summation by compensating for rounding errors. This algorithm keeps track of the small errors introduced during each addition step, preventing them from accumulating and significantly affecting the final result.
             <br>
                 The algorithm works by maintaining a separate compensation variable that records the rounding errors. When a floating-point operation introduces an error, this small error is added to the compensation variable. On subsequent operations, this compensation is used to correct the total sum, effectively reducing the error at each step and ensuring a more accurate result over many iterations.
             </p>
 
-            <h4>2.3.2 Recursive Formula for Mean Calculation</h4>
+            <h4>2.4.2 Recursive Formula for Mean Calculation</h4>
             <p>
                 An alternative method for calculating the mean, especially useful for streaming data or when working with large datasets, is the use of a recursive formula, also discussed by Donald Knuth, in particular in his book "The Art of Computer Programming". Instead of summing all the data at once, this formula updates the mean incrementally as each new data point is added. The recursive formula for the mean is given by:
             </p>
@@ -301,6 +319,12 @@
 
 
         </section>
+
+        <div class="index">
+            <ul>
+                <li><a href="#theory">Go to Theory</a></li>
+            </ul>
+        </div>
 
         <section id="practice">
             <h2>Practice</h2>
@@ -484,7 +508,10 @@
 <p>
     The screenshot below shows the output of the realized program, using the parameters <strong>n = 25</strong> for the number of servers, <strong>m = 15</strong> for the number of attackers, and <strong>p = 0.7</strong> for the probability of successful penetrations.
 </p>
-<img src="Homework1_charts.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+
+<a href="images/screenshot.png" data-lightbox="result" data-title="Output of the program with n=25, m=15, p=0.7">
+    <img src="Homework1_charts.png" alt="Output of the program with n=25, m=15, p=0.7" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
 
 <script>
     // JavaScript function to toggle visibility of code sections
@@ -502,5 +529,7 @@
         
         
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
 </body>
 </html>
