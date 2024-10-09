@@ -58,6 +58,36 @@
             margin-bottom: 20px; /* Spazio tra un paragrafo e l'altro */
         }
 
+        .theory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Spazio tra il titolo/link e il resto del contenuto */
+}
+
+.go-practice {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.go-practice:hover {
+    color: #2980b9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .theory-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .go-practice {
+        margin-top: 10px;
+    }
+}
+
         ul {
             padding-left: 20px; /* Aggiunge padding per allineare con il paragrafo */
         }
@@ -179,14 +209,11 @@
 
         <h1>Statistics - Homework 1</h1>
 
-        <div class="index">
-            <ul>
-                <li><a href="#practice">Go to Practice</a></li>
-            </ul>
-        </div>
-
         <section id="theory">
-            <h2>Theory</h2>
+            <div class="theory-header">
+                <h2>Theory</h2>
+                <a class="go-practice" href="#practice">Go to Practice</a>
+            </div>
             
             <!-- Capitolo 1: Basic notions in statistics -->
             <h3>1. Basic notions in statistics</h3>
@@ -320,14 +347,11 @@
 
         </section>
 
-        <div class="index">
-            <ul>
-                <li><a href="#theory">Go to Theory</a></li>
-            </ul>
-        </div>
-
         <section id="practice">
-            <h2>Practice</h2>
+            <div class="theory-header">
+                <h2>Practice</h2>
+                <a class="go-practice" href="#theory">Go to Theory</a>
+            </div>
 
             <h3>Programming Exercise Overview</h3>
 <p>
