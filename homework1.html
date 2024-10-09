@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics - Homework 1</title>
+    <style>
+        /* Font Google Import */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 1000px; /* Aumentato per dare più spazio */
+            width: 100%;
+            position: relative;
+        }
+
+        h1 {
+            color: #34495e;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #34495e;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h3,h4 {
+            margin-bottom: 10px; /* Spazio tra il titolo e il paragrafo */
+        }
+
+        p {
+            margin-bottom: 20px; /* Spazio tra un paragrafo e l'altro */
+        }
+
+        ul {
+            padding-left: 20px; /* Aggiunge padding per allineare con il paragrafo */
+        }
+
+        .index {
+            margin-bottom: 40px;
+        }
+
+        .index ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .index ul li {
+            margin: 10px 0;
+        }
+
+        .index ul li a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .index ul li a:hover {
+            color: #2980b9;
+        }
+
+        /* Link to home */
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-home a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .back-home a:hover {
+            color: #2980b9;
+        }
+
+        /* Section styles */
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .back-home a {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Styling for the Show Code button */
+        button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 15px;
+        }
+
+        /* Button hover effect */
+        button:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        }
+
+        /* Add spacing between button and next paragraph */
+        button + p {
+        margin-top: 20px;
+        }
+
+        /* Style for the code block when it is shown */
+        pre {
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+        }
+
+        /* Code block indentation */
+        code {
+        font-family: 'Courier New', monospace;
+        font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Link per tornare alla home -->
+        <div class="back-home">
+            <a href="index.html">&larr; <strong>Back to Home</strong></a>
+        </div>
+
+        <h1>Statistics - Homework 1</h1>
+
+        <div class="index">
+            <ul>
+                <li><a href="#theory">Go to Theory</a></li>
+                <li><a href="#practice">Go to Practice</a></li>
+            </ul>
+        </div>
+
+        <section id="theory">
+            <h2>Theory</h2>
+            
+            <!-- Capitolo 1: Basic notions in statistics -->
+            <h3>1. Basic notions in statistics</h3>
+            <p>In statistics, understanding basic concepts is essential for proper data collection, analysis, and interpretation. Below are detailed definitions of population, statistical unit, and distribution.</p>
+        
+            <h4>1.1 Population</h4>
+            <p>
+                A population is the complete set of all possible observations or elements that meet a certain criterion, and about which we aim to draw conclusions. Populations can vary in size and may be finite or infinite, they can represent something real or imaginary, they can be static or dynamic (like a stream of data). In practical terms, a population might refer to all individuals within a certain country, all manufactured products from a factory, or all possible outcomes of a repeated experiment. 
+                <br>
+                For example, in a study aimed at understanding the income of citizens in a country, the population would consist of every individual earning an income within that country. When a population is too large or impractical to analyze entirely, samples are drawn to make inferences about the population's characteristics, using statistical methods. 
+            </p>
+        
+            <h4>1.2 Statistical unit</h4>
+            <p>
+                A statistical unit is the basic entity or object about which data is collected and observations are made. It represents the smallest individual component of the population under study. The statistical unit can be an individual person, household, organization, event, or any entity that is measurable. 
+                <br>
+                For instance, in a demographic survey, the statistical unit could be a single person, while in an industrial quality control study, it might be an individual product item. It is important that the definition of the statistical unit is consistent across the study to ensure accurate data collection and analysis.
+                <br>
+                As a result of the observation, the researchers obtain an array of characters (or phenomena) (X<sub>1</sub>, X<sub>2</sub>, ..., X<sub>n</sub>) for each statistical unit. These characters can be named variables if they are measurable with a set of all possible values that are allowed.
+            </p>
+        
+            <h4>1.3 Distribution</h4>
+            <p>
+                A distribution describes how values of a particular variable are spread across possible outcomes or intervals. It provides a mathematical function or graphical representation showing the frequency or probability of various outcomes occurring. In other words, the statistical distribution shows which values are common and uncommon.
+                <br>
+                Distributions can be discrete, where the variable takes on a countable number of values (e.g., the number of heads in a series of coin flips), or continuous, where the variable can take any value within a range (e.g., the weight of newborns). Common types of distributions include:
+                <ul>
+                    <li>Normal distribution: A symmetric, bell-shaped curve that describes many natural phenomena, where most observations cluster around a central value, with fewer extreme values on either side.</li>
+                    <li>Uniform Distribution: All outcomes are equally likely across the range of possible values.</li>
+                    <li>Skewed distribution: One tail of the distribution is longer than the other, indicating that values on one side are more spread out than on the other.</li>
+                </ul>
+                <br>    
+                Understanding the distribution of data is crucial for determining appropriate statistical methods for analysis, estimating probabilities, and making predictions.
+            </p>
+        
+            <h3>2. Notion of average, computational problems with the floating point representation and numerical solution</h3>
+
+            <h4>2.1 Average</h4>
+            <p>
+                The average, or arithmetic mean, is one of the most fundamental concepts in statistics. It is used to summarize a set of data by calculating the central value, which represents the "typical" value in the dataset. The arithmetic mean is computed by summing all values in the dataset and dividing by the number of values. The formula for the arithmetic mean is given by:
+            </p>
+            <p>
+                <strong>Arithmetic Mean (μ) = (x₁ + x₂ + ... + xₙ) / n</strong>
+            </p>
+            <p>
+                where <strong>x₁, x₂, ..., xₙ</strong> are the individual data points, and <strong>n</strong> is the number of data points. The mean is highly sensitive to outliers, and extreme values can distort the average, leading to potential misinterpretations of the data.
+            </p>
+
+            <h4>2.2 Computational Problems with Floating Point Representation</h4>
+            <p>
+                While calculating the average might seem straightforward, there are several computational challenges when working with floating-point representation in computers. These challenges arise from the fact that floating-point numbers are only an approximation of real numbers, and this can introduce several types of errors.
+            </p>
+
+            <h4>2.2.1 Numerical Stability</h4>
+            <p>
+                Numerical stability refers to how errors in calculations propagate through an algorithm. A numerically stable algorithm produces results with minimal error, even when rounding errors or small perturbations in the input data occur. In the context of floating-point arithmetic, numerical stability is crucial because even small rounding errors can accumulate over many operations, leading to significant inaccuracies.
+                <br>
+                For example, summing a large number of floating-point numbers can introduce cumulative errors due to rounding at each step of the summation. Algorithms that are numerically unstable may produce large errors that grow exponentially with the number of operations performed.
+            </p>
+
+            <h4>2.2.2 Errors</h4>
+            <p>
+                Floating-point numbers represent real numbers with a finite number of binary digits, which limits the precision. This leads to two main types of errors:
+            </p>
+            <ul>
+                <li><strong>Rounding Error:</strong> Occurs when a real number cannot be represented exactly in the floating-point format. The number is rounded to the nearest representable value, introducing a small error.</li>
+                <li><strong>Truncation Error:</strong> Occurs when approximating an infinite process (such as a series expansion) with a finite number of terms. In the context of floating-point arithmetic, truncation occurs when large or small parts of the number are ignored or rounded off.</li>
+            </ul>
+            <p>
+                <br>
+                Rounding errors can accumulate over multiple operations, leading to a gradual degradation in precision. In the worst-case scenario, this can cause a significant loss of accuracy, especially in iterative processes where errors compound at each step.
+            </p>
+
+            <h4>2.2.3 Catastrophic Cancellation</h4>
+            <p>
+                Catastrophic cancellation occurs when subtracting two nearly equal floating-point numbers. This results in a significant loss of precision because the most significant digits cancel out, leaving only the less precise, smaller digits. The difference between the two numbers is much smaller than the original numbers themselves, but the floating-point representation limits the precision of this difference, leading to a large relative error.
+            </p>
+            <p>
+                For example, if two numbers like 1.0000001 and 1.0000000 are subtracted, the resulting difference is 0.0000001. However, the floating-point representation may only store a few significant digits, which can result in a loss of information and significant rounding errors. Catastrophic cancellation is particularly problematic in calculations involving the difference of nearly equal numbers.
+            </p>
+
+            <h4>2.3 Numerical Solutions</h4>
+            <p>
+                There are various numerical methods designed to reduce the impact of floating-point errors and improve computational accuracy. Two notable methods include the Kahan's Algorithm, which compensates for floating-point rounding errors, and recursive formulas for efficiently updating calculations like the mean in real-time.
+            </p>
+
+            <h4>2.3.1 Kahan's Algorithm</h4>
+            <p>
+                The <strong>Kahan Summation Algorithm</strong>, proposed by computer scientist William Kahan, is a technique to improve the accuracy of floating-point summation by compensating for rounding errors. This algorithm keeps track of the small errors introduced during each addition step, preventing them from accumulating and significantly affecting the final result.
+            <br>
+                The algorithm works by maintaining a separate compensation variable that records the rounding errors. When a floating-point operation introduces an error, this small error is added to the compensation variable. On subsequent operations, this compensation is used to correct the total sum, effectively reducing the error at each step and ensuring a more accurate result over many iterations.
+            </p>
+
+            <h4>2.3.2 Recursive Formula for Mean Calculation</h4>
+            <p>
+                An alternative method for calculating the mean, especially useful for streaming data or when working with large datasets, is the use of a recursive formula, also discussed by Donald Knuth, in particular in his book "The Art of Computer Programming". Instead of summing all the data at once, this formula updates the mean incrementally as each new data point is added. The recursive formula for the mean is given by:
+            </p>
+            <p>
+                <strong>μₙ = μₙ₋₁ + (xₙ - μₙ₋₁) / n</strong>
+            </p>
+            <p>
+                Where:
+                <ul>
+                    <li><strong>μₙ</strong> is the mean after the nth data point.</li>
+                    <li><strong>μₙ₋₁</strong> is the mean after the (n-1)th data point.</li>
+                    <li><strong>xₙ</strong> is the nth data point.</li>
+                    <li><strong>n</strong> is the total number of data points processed.</li>
+                </ul>
+            </p>
+            <p>
+                This recursive approach reduces the need to store all data points in memory, making it particularly useful in real-time applications or when dealing with very large datasets where memory and computational efficiency are concerns. It allows for efficient and dynamic updates to the mean with each new data point.
+            </p>
+
+
+        </section>
+
+        <section id="practice">
+            <h2>Practice</h2>
+
+            <h3>Programming Exercise Overview</h3>
+<p>
+    The task involves simulating an attack on <strong>n</strong> servers by <strong>m</strong> attackers, where each attacker has a probability <strong>p</strong> of successfully penetrating a server. The goal is to graphically represent the outcomes for each server over time. A line stays flat if an attacker doesn't penetrate the server, and it jumps to 1 if the penetration is successful. At the end of the simulation, a histogram is drawn, showing the distribution of attackers based on the number of successful penetrations.
+</p>
+
+<!-- Sections explaining the code with show/hide buttons -->
+<h3>Code Explanation</h3>
+
+<!-- Section 1: Initial Setup -->
+<h4>1. Simulation Setup</h4>
+<p>
+    The first step is setting up the variables <strong>n</strong>, <strong>m</strong>, and <strong>p</strong>. The program initializes the servers and attackers, the penetration probability and the array containing the final number of penetrations of each attacker, then we create two charts (one for the attackers' trajectories and one for the penetrations distribution).
+</p>
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('setupCode')">Show Code</button>
+<div id="setupCode" style="display: none;">
+    <pre>
+        int n_servers = 25; // Number of servers
+        int m_attackers= 15; // Number of attackers
+        double pen_probability = 0.7; // Penetration probability
+        // Array to track the final penetration level of each attacker
+        int[] final_penetrations = new int[m_attackers];
+        
+        // Create the first chart for attack trajectories
+        Chart chart1 = new Chart();
+        chart1.Dock = DockStyle.Fill; // Fill the allocated space
+        tableLayoutPanel.Controls.Add(chart1, 0, 0); // Add to the first row
+        ChartArea chartArea1 = new ChartArea();
+        Title chart1Title = chart1.Titles.Add("Server attack trajectories");
+        chartArea1.AxisX.Title = "Server";
+        chartArea1.AxisX.Minimum = 1;
+        chartArea1.AxisX.Maximum = n_servers;
+        chartArea1.AxisX.Interval = 1;
+        chartArea1.AxisY2.Interval = 1;
+        chartArea1.AxisY2.Enabled = AxisEnabled.True;
+        chartArea1.AxisY2.Title = "Penetrations";
+        chartArea1.AxisY2.LabelStyle.Enabled = true;
+        chartArea1.AxisY.LabelStyle.Enabled = false;
+        chart1.ChartAreas.Add(chartArea1);
+
+        // Create the second chart for penetration distribution
+        Chart chart2 = new Chart();
+        chart2.Dock = DockStyle.Fill; // Fill the allocated space
+        tableLayoutPanel.Controls.Add(chart2, 0, 1); // Add to the second row
+        ChartArea chartArea2 = new ChartArea();
+        Title chart2Title = chart2.Titles.Add("Distribution of attackers' penetrations");
+        chartArea2.AxisX.Title = "Penetrations";
+        chartArea2.AxisY.Interval = 1;
+        chartArea2.AxisY.Title = "Amount of attackers";
+        chart2.ChartAreas.Add(chartArea2);
+    </pre>
+</div>
+
+<!-- Section 2: Simulation of Penetration -->
+<h4>2. Penetration Simulation</h4>
+<p>
+    In this section, the code simulates the attack for each attacker on each server, determining if the penetration is successful based on the probability p.
+</p>
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('simulationCode')">Show Code</button>
+<div id="simulationCode" style="display: none;">
+    <pre>
+        Random rand = new Random();
+
+        // Add series for each attacker to the first chart
+        for (int attacker = 0; attacker < m_attackers; attacker++)
+        {
+            Series series = new Series("Attacker " + (attacker + 1));
+            series.ChartType = SeriesChartType.StepLine;
+            series.BorderWidth = 2;
+            series.Color = colors[attacker % colors.Length];
+        
+            int current_penetration = 0; // Current penetration level for this attacker
+        
+            // Simulate the penetration attempts for each server
+            for (int server = 1; server <= n_servers; server++)
+            {
+                // Random chance to penetrate the server
+                if (rand.NextDouble() < pen_probability)
+                {
+                    current_penetration++;
+                }
+                // Add point to the series
+                series.Points.AddXY(server, current_penetration);
+            }
+        
+            // Store the final penetration for the attacker
+            final_penetrations[attacker] = current_penetration;
+            chart1.Series.Add(series);
+        }
+    </pre>
+</div>
+
+<h4>3. Distribution Counting</h4>
+<p>
+    Once the simulation is complete, the next step is to count the distribution of penetrations made by the attackers. The results are represented in the second chart.
+</p>
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('distributionCode')">Show Code</button>
+<div id="distributionCode" style="display: none;">
+    <pre>
+        // Dictionary to count how many attackers reached a certain number of penetrations
+        Dictionary<int, int> penetration_distribution = new Dictionary<int, int>();
+
+        // Count the distribution of penetrations
+        for (int i = 0; i < final_penetrations.Length; i++)
+        {
+            int penetrations = final_penetrations[i];
+
+            if (penetration_distribution.ContainsKey(penetrations))
+            {
+                penetration_distribution[penetrations]++;
+            }
+            else {
+                penetration_distribution[penetrations] = 1;
+            }
+        }
+
+        // Create a series for the second chart (column chart)
+        Series distributionSeries = new Series("Penetrations distribution");
+        distributionSeries.ChartType = SeriesChartType.Column;
+        distributionSeries.Color = Color.Orange;
+
+        // Add data points to the distribution chart
+        foreach (var entry in penetration_distribution)
+        {
+            distributionSeries.Points.AddXY(entry.Key, entry.Value);
+        }
+        chart2.Series.Add(distributionSeries);
+    </pre>
+</div>
+
+<h4>4. Average</h4>
+<p>
+    A recursive function is used to calculate the average number of servers penetrated by all attackers. Then the result is shown in the second chart with a dashed green line. 
+</p>
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('averageCode')">Show Code</button>
+<div id="averageCode" style="display: none;">
+    <pre>
+        private double RecursiveMean(int[] penetrations, int count, int index, double current_mean)
+        {
+            if (index >= count)
+            {
+                return current_mean; // Return mean when we reach the end
+            }
+
+            // Update the mean based on the current penetration value
+            current_mean = current_mean + (penetrations[index] - current_mean) / (index + 1);
+
+            // Recur for the next index
+            return RecursiveMean(penetrations, count, index + 1, current_mean);
+        }
+
+        [...]
+
+        // Variables for recursive average calculation
+        double recursiveAverage = RecursiveMean(final_penetrations,m_attackers,0,0.0);
+        
+        // Add the indicator for the recursive average
+        StripLine average_line = new StripLine();
+        average_line.BorderColor = Color.Green;
+        average_line.BorderDashStyle = ChartDashStyle.Dash;
+        average_line.BorderWidth = 4;
+        average_line.IntervalOffset = recursiveAverage; // Set the position of the line to the average
+        average_line.Text = $"Average: {recursiveAverage:F2}";
+        average_line.TextAlignment = StringAlignment.Near;
+        average_line.Font = new Font("Arial",11);
+
+        // Add the average line to the X axis of the second chart
+        chart2.ChartAreas[0].AxisX.StripLines.Add(average_line);
+
+    </pre>
+</div>
+
+<h4>5. Final Result</h4>
+<p>
+    The screenshot below shows the output of the realized program, using the parameters <strong>n = 25</strong> for the number of servers, <strong>m = 15</strong> for the number of attackers, and <strong>p = 0.7</strong> for the probability of successful penetrations.
+</p>
+<img src="Homework1_charts.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+
+<script>
+    // JavaScript function to toggle visibility of code sections
+    function toggleCode(id) {
+        var codeBlock = document.getElementById(id);
+        if (codeBlock.style.display === "none") {
+            codeBlock.style.display = "block";
+        } else {
+            codeBlock.style.display = "none";
+        }
+    }
+</script>
+        
+        </section>
+        
+        
+    </div>
+</body>
+</html>
