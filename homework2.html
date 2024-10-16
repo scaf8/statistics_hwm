@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2/dist/css/lightbox.min.css" rel="stylesheet">
+    <title>Statistics - Homework 2</title>
+    <style>
+        /* Font Google Import */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 1000px; /* Aumentato per dare più spazio */
+            width: 100%;
+            position: relative;
+        }
+
+        h1 {
+            color: #34495e;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #34495e;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h3,h4 {
+            margin-bottom: 10px; /* Spazio tra il titolo e il paragrafo */
+        }
+
+        p {
+            margin-bottom: 20px; /* Spazio tra un paragrafo e l'altro */
+        }
+
+        .theory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Spazio tra il titolo/link e il resto del contenuto */
+}
+
+.go-practice {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.go-practice:hover {
+    color: #2980b9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .theory-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .go-practice {
+        margin-top: 10px;
+    }
+}
+
+        ul, ol {
+            padding-left: 20px; /* Aggiunge padding per allineare con il paragrafo */
+        }
+
+        .index {
+            margin-bottom: 40px;
+        }
+
+        .index ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .index ul li {
+            margin: 10px 0;
+        }
+
+        .index ul li a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .index ul li a:hover {
+            color: #2980b9;
+        }
+
+        /* Link to home */
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-home a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .back-home a:hover {
+            color: #2980b9;
+        }
+
+        /* Section styles */
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .back-home a {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Styling for the Show Code button */
+        button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 15px;
+        }
+
+        /* Button hover effect */
+        button:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        }
+
+        /* Add spacing between button and next paragraph */
+        button + p {
+        margin-top: 20px;
+        }
+
+        /* Style for the code block when it is shown */
+        pre {
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+        }
+
+        /* Code block indentation */
+        code {
+        font-family: 'Courier New', monospace;
+        font-size: 0.95em;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Link per tornare alla home -->
+        <div class="back-home">
+            <a href="index.html">&larr; <strong>Back to Home</strong></a>
+        </div>
+
+        <h1>Statistics - Homework 2</h1>
+
+        <section id="theory">
+            <div class="theory-header">
+                <h2>Theory</h2>
+                <a class="go-practice" href="#practice">Go to Practice</a>
+            </div>
+            
+            <!-- Capitolo 1: Basic notions in statistics -->
+            <h3>Welford Recursion</h3>
+            <p>
+                The Welford algorithm is an efficient method for calculating the mean and variance of a sequence of data points in a single pass, particularly when the data is arriving in a streaming fashion. It avoids the numerical stability issues that can arise with other methods when the dataset is large.
+                <br>
+                Here's the simplest and most elegant way to present the Welford recursion:
+            </p>
+
+            <h4>Given:</h4>
+            <ul>
+                <li><i>X<sub>1</sub>, X<sub>2</sub>, ..., X<sub>n</sub></i> are the data points observed so far.</li>
+                <li><i>&mu;<sub>n</sub></i> is the mean of the first <i>n</i> points.</li>
+                <li><i>&sigma;<sub>n</sub><sup>2</sup></i> is the variance of the first <i>n</i> points.</li>
+            </ul>
+            <p>We use Welford's recursion to update the mean and variance as we process each new data point.</p>
+        
+            <h4>Recursions:</h4>
+            <p>
+                <span>Updating the Mean:</span> <br>
+                <i>&mu;<sub>n+1</sub> = &mu;<sub>n</sub> + <sup>(X<sub>n+1</sub> - &mu;<sub>n</sub>)</sup>/<sub>n+1</sub></i>
+            </p>
+            <p>
+                <span>This efficiently updates the mean by incorporating the new data point </span><i>X<sub>n+1</sub></i>
+            </p>
+            
+            <p>
+                <span>Updating the Variance:</span> <br>
+                <i>M<sub>n+1</sub> = M<sub>n</sub> + (X<sub>n+1</sub> - &mu;<sub>n</sub>)(X<sub>n+1</sub> - &mu;<sub>n+1</sub>)</i>
+            </p>
+            <p>
+                <span>Where </span><i>M<sub>n</sub></i><span> is the sum of squared differences from the mean. The variance is then given by:</span>
+            <br>
+                <i>&sigma;<sub>n+1</sub><sup>2</sup> = <sup>M<sub>n+1</sub></sup>/<sub>n</sub></i>
+            </p>
+
+
+            <h4>Initialization:</h4>
+            <p><i>&mu;<sub>1</sub> = X<sub>1</sub></i></p>
+            <p><i>M<sub>1</sub> = 0</i><span> (since there's only one data point, the variance is 0)</span></p>
+
+        
+            <h4>Summary of the Steps:</h4>
+            <p>For each new data point <i>X<sub>n+1</sub></i>:</p>
+            <ol>
+                <li>Compute the new mean: <i>&mu;<sub>n+1</sub> = &mu;<sub>n</sub> + <sup>(X<sub>n+1</sub> - &mu;<sub>n</sub>)</sup>/<sub>n+1</sub></i></li>
+                <li>Update <i>M</i>: <i>M<sub>n+1</sub> = M<sub>n</sub> + (X<sub>n+1</sub> - &mu;<sub>n</sub>)(X<sub>n+1</sub> - &mu;<sub>n+1</sub>)</i></li>
+                <li>Update variance: <i>&sigma;<sub>n+1</sub><sup>2</sup> = <sup>M<sub>n+1</sub></sup>/<sub>n</sub></i></li>
+            </ol>
+            
+            <p>
+                <br>
+                This method allows you to compute the mean and variance in a numerically stable and efficient way, requiring only <i>O(1)</i> operations per data point.</p>
+
+
+        </section>
+
+        <section id="practice">
+            <div class="theory-header">
+                <h2>Practice</h2>
+                <a class="go-practice" href="#theory">Go to Theory</a>
+            </div>
+
+            <h3>Programming Exercise Overview</h3>
+            <p>
+                Refine you Euler-Maruyama simulator to approximate numerical solutions of stochastic differential equations (SDE), by adding the following variants to the existing framework:
+            </p>
+            <ul>
+                <li>Jumps -1 +1 with prob. p [random walk]</li>
+                <li>Absolute and relative frequency trajectories</li>
+                <li>Final distribution and intermediate distributions (at one internal time/step selectable from the gui), with mean and variance (make it all parametric so that one unique interface will handle it all).</li>
+            </ul>
+            <p></p>
+            <!-- Sections explaining the code with show/hide buttons -->
+            <h3>Code Explanation</h3>
+
+            <!-- Section 1: Initial Setup -->
+            <h4>1. Penetration Simulation</h4>
+            <p>
+                The simulation setup has been updated to modify the behavior of attackers' trajectories. Now, in case of failed penetration, the trajectory drops by a value of -1, while it rises by +1 in case of successful penetration (as in the first homework).
+            </p>
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('setupCode')">Show Code</button>
+<div id="setupCode" style="display: none;">
+    <pre>
+        // Array to count successful penetrations on each server
+        int[] penetrationCounts = new int[numServers];
+
+        // Create the trajectories of attackers
+        for (int i = 0; i < numAttackers; i++)
+        {
+            var series = new LineSeries { Title = $"Attacker {i + 1}" };
+            attackerTrajectories[i] = new List<int>();
+
+            int currentPosition = 0;
+            for (int server = 0; server < numServers; server++)
+            {
+                // Penetration simulation
+                bool success = rand.NextDouble() < penetrationProb;
+                currentPosition += success ? 1 : -1;
+
+                // Add the point to the trajectory
+                series.Points.Add(new DataPoint(server, currentPosition));
+
+                // Save the current position for attacker i at server step 't'
+                attackerTrajectories[i].Add(currentPosition);
+
+                // Increase the penetration count for the current server if the attack is successful
+                if (success)
+                {
+                    penetrationCounts[server]++;
+                }
+            }
+            attackerPositions[i] = currentPosition; // store the final position
+            trajectoryPlotModel.Series.Add(series);
+        }
+    </pre>
+</div>
+
+<!-- Section 2: Simulation of Penetration -->
+<h4>2. Absolute and Relative Frequency</h4>
+<p>
+    
+</p>
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('simulationCode')">Show Code</button>
+<div id="simulationCode" style="display: none;">
+    <pre>
+        // ------------------------- Absolute Frequency Chart -------------------------
+        var absoluteFrequencyPlotModel = new PlotModel { Title = "Absolute Frequency" };
+
+        // Axis for the number of servers (x) and frequencies (y)
+        absoluteFrequencyPlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom, Minimum = 0, Maximum = numServers, Title = "Servers" });
+        absoluteFrequencyPlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Title = "Absolute Frequency" });
+
+        // Absolute frequency
+        var absoluteFrequencySeries = new LineSeries { Title = "Absolute Frequency", Color = OxyColors.Blue };
+        for (int server = 0; server < numServers; server++)
+        {
+            absoluteFrequencySeries.Points.Add(new DataPoint(server, penetrationCounts[server]));
+        }
+
+        absoluteFrequencyPlotModel.Series.Add(absoluteFrequencySeries);
+
+
+        // ------------------------- Relative Frequency Chart -------------------------
+        var relativeFrequencyPlotModel = new PlotModel { Title = "Relative Frequency" };
+
+        // Axis for the number of servers (x) and frequencies (y)
+        relativeFrequencyPlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Bottom, Minimum = 0, Maximum = numServers, Title = "Servers" });
+        relativeFrequencyPlotModel.Axes.Add(new LinearAxis { Position = AxisPosition.Left, Title = "Relative Frequency" });
+
+        // Relative frequency
+        double totalAttacks = numAttackers;
+        var relativeFrequencySeries = new LineSeries { Title = "Relative Frequency", Color = OxyColors.Green };
+        for (int server = 0; server < numServers; server++)
+        {
+            double relativeFrequency = penetrationCounts[server] / totalAttacks;
+            relativeFrequencySeries.Points.Add(new DataPoint(server, relativeFrequency));
+        }
+
+        relativeFrequencyPlotModel.Series.Add(relativeFrequencySeries);
+    </pre>
+</div>
+
+<h4>3. Distributions</h4>
+<p>
+    Once the simulation is complete, the next step is to count the distribution of penetrations made by the attackers. The results are represented in the second chart.
+</p>
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('distributionCode')">Show Code</button>
+<div id="distributionCode" style="display: none;">
+    <pre>
+        // Dictionary to count how many attackers reached a certain number of penetrations
+        Dictionary<int, int> penetration_distribution = new Dictionary<int, int>();
+
+        // Count the distribution of penetrations
+        for (int i = 0; i < final_penetrations.Length; i++)
+        {
+            int penetrations = final_penetrations[i];
+
+            if (penetration_distribution.ContainsKey(penetrations))
+            {
+                penetration_distribution[penetrations]++;
+            }
+            else {
+                penetration_distribution[penetrations] = 1;
+            }
+        }
+
+        // Create a series for the second chart (column chart)
+        Series distributionSeries = new Series("Penetrations distribution");
+        distributionSeries.ChartType = SeriesChartType.Column;
+        distributionSeries.Color = Color.Orange;
+
+        // Add data points to the distribution chart
+        foreach (var entry in penetration_distribution)
+        {
+            distributionSeries.Points.AddXY(entry.Key, entry.Value);
+        }
+        chart2.Series.Add(distributionSeries);
+    </pre>
+</div>
+
+
+<h4>4. Final Result</h4>
+<p>
+    The screenshot below shows the output of the realized program, using the parameters <strong>n = 25</strong> for the number of servers, <strong>m = 15</strong> for the number of attackers, and <strong>p = 0.7</strong> for the probability of successful penetrations.
+</p>
+
+<a href="Homework2_charts.png" data-lightbox="result" data-title="Output of the program with n=25, m=15, p=0.7">
+    <img src="Homework2_charts.png" alt="Output of the program with n=25, m=15, p=0.7" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
+
+<script>
+    // JavaScript function to toggle visibility of code sections
+    function toggleCode(id) {
+        var codeBlock = document.getElementById(id);
+        if (codeBlock.style.display === "none") {
+            codeBlock.style.display = "block";
+        } else {
+            codeBlock.style.display = "none";
+        }
+    }
+</script>
+        
+        </section>
+        
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
+</body>
+</html>
