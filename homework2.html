@@ -337,7 +337,7 @@
 <!-- Section 2: Simulation of Penetration -->
 <h4>2. Absolute and Relative Frequency</h4>
 <p>
-    
+    In the lower part of the output of the created program, there are two plots that show respectively the absolute frequency and the average frequency of the penetrations. The first indicates the amount of attackers who have successfully penetrated each server, the second instead indicates the relationship between the just calculated absolute frequency and the total number of attacks received by the server (which is equivalent to the total number of attackers).
 </p>
 <!-- Button to show/hide code -->
 <button onclick="toggleCode('simulationCode')">Show Code</button>
@@ -382,40 +382,68 @@
 
 <h4>3. Distributions</h4>
 <p>
-    Once the simulation is complete, the next step is to count the distribution of penetrations made by the attackers. The results are represented in the second chart.
+    This section shows the final distribution of penetrations made by the attackers and the distribution at an intermediate step <i>t</i>. In this example, for illustrative purposes, a value of t = 18 has been chosen. The results are shown in the area to the right of the trajectory plot.
 </p>
 <!-- Button to show/hide code -->
 <button onclick="toggleCode('distributionCode')">Show Code</button>
 <div id="distributionCode" style="display: none;">
     <pre>
-        // Dictionary to count how many attackers reached a certain number of penetrations
-        Dictionary<int, int> penetration_distribution = new Dictionary<int, int>();
+        // ------------------------- Histogram of the final distribution -------------------------
+        var histogramPlotModel = new PlotModel { Title = "Attackers distribution" };
 
-        // Count the distribution of penetrations
-        for (int i = 0; i < final_penetrations.Length; i++)
+        var categoryAxis = new CategoryAxis { Position = AxisPosition.Left };
+        var valueAxis = new LinearAxis { Position = AxisPosition.Bottom, Minimum = 0, Title = "Amount of attackers" };
+
+        histogramPlotModel.Axes.Add(categoryAxis);
+        histogramPlotModel.Axes.Add(valueAxis);
+
+        // Group the final positions and create the histogram
+        var barSeriesFinal = new BarSeries { Title = "Attackers distribution" };
+        var finalDistribution = attackerPositions.GroupBy(x => x)
+                                    .OrderBy(g => g.Key)
+                                    .Select(g => new { Penetrazioni = g.Key, Count = g.Count() })
+                                    .ToList();
+
+        // Add the bars to the chart
+        foreach (var item in finalDistribution)
         {
-            int penetrations = final_penetrations[i];
+            categoryAxis.Labels.Add(item.Penetrazioni.ToString());
+            barSeriesFinal.Items.Add(new BarItem(item.Count));
+            barSeriesFinal.FillColor = OxyColors.Blue;
+        }
 
-            if (penetration_distribution.ContainsKey(penetrations))
+        histogramPlotModel.Series.Add(barSeriesFinal);
+
+
+        // ------------------------- Histogram at intermediate step t -------------------------
+        int t = 18;
+        var barSeriesRandomT = new BarSeries
+        {
+            Title = $"Distribution at t = {t}",
+            FillColor = OxyColors.Orange
+        };
+
+        // Get attacker positions at time step t
+        var positionsAtT = attackerTrajectories.Select(x => x.Value[t]).ToList();
+
+        // Filter the positions by the value of t
+        var filteredDistribution = positionsAtT
+            .GroupBy(x => x)
+            .OrderBy(g => g.Key)
+            .Select(g => new { Penetrazioni = g.Key, Count = g.Count() })
+            .ToList();
+
+        // Add the bars to the chart
+        foreach (var item in filteredDistribution)
+        {
+            if (!categoryAxis.Labels.Contains(item.Penetrazioni.ToString()))
             {
-                penetration_distribution[penetrations]++;
+                categoryAxis.Labels.Add(item.Penetrazioni.ToString());
             }
-            else {
-                penetration_distribution[penetrations] = 1;
-            }
+            barSeriesRandomT.Items.Add(new BarItem(item.Count));
         }
 
-        // Create a series for the second chart (column chart)
-        Series distributionSeries = new Series("Penetrations distribution");
-        distributionSeries.ChartType = SeriesChartType.Column;
-        distributionSeries.Color = Color.Orange;
-
-        // Add data points to the distribution chart
-        foreach (var entry in penetration_distribution)
-        {
-            distributionSeries.Points.AddXY(entry.Key, entry.Value);
-        }
-        chart2.Series.Add(distributionSeries);
+        histogramPlotModel.Series.Add(barSeriesRandomT);
     </pre>
 </div>
 
