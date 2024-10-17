@@ -457,6 +457,22 @@
     <img src="Homework2_charts.png" alt="Output of the program with n=25, m=15, p=0.7" style="max-width: 100%; height: auto; margin: 20px 0;">
 </a>
 
+
+<h4>Notes about the absolute and relative frequency</h4>
+<p>
+    In the screenshot, you can see that the graphs of absolute frequency and relative frequency have the same behaviour: proportionally, they rise and fall in the same way. This is due to the fact that the relative frequency is derived by dividing the absolute frequency by the number of attacks, which is constant for each step (in fact, it is the total number of attackers). It therefore maintains the same trend.
+</p>
+
+<h4>Notes about the final and intermediate distribution</h4>
+<p>
+    The main differences between the two distributions are two and concern the mean and variance.
+    <br>
+    The average of the intermediate distribution is slightly lower than that of the final distribution. In fact, since the simulation was run with a probability of success of 0.7, the trajectories of the attackers tend to rise as the steps increase. If a smaller difference between the two averages had been desired, we would have needed to set a probability of success of 0.5.
+    <br>
+    The variance, as typically happens in random walks, is greatest in the final distribution and gradually decreases going backwards in steps.
+</p>
+
+
 <script>
     // JavaScript function to toggle visibility of code sections
     function toggleCode(id) {
