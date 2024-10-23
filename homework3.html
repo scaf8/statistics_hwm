@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2/dist/css/lightbox.min.css" rel="stylesheet">
+    <title>Statistics - Homework 3</title>
+    <style>
+        /* Font Google Import */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 1000px; /* Aumentato per dare più spazio */
+            width: 100%;
+            position: relative;
+        }
+
+        h1 {
+            color: #34495e;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #34495e;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h3,h4 {
+            margin-bottom: 10px; /* Spazio tra il titolo e il paragrafo */
+        }
+
+        p {
+            margin-bottom: 20px; /* Spazio tra un paragrafo e l'altro */
+        }
+
+        .theory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Spazio tra il titolo/link e il resto del contenuto */
+}
+
+.go-practice {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.go-practice:hover {
+    color: #2980b9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .theory-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .go-practice {
+        margin-top: 10px;
+    }
+}
+
+        ul, ol {
+            padding-left: 20px; /* Aggiunge padding per allineare con il paragrafo */
+        }
+
+        .index {
+            margin-bottom: 40px;
+        }
+
+        .index ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .index ul li {
+            margin: 10px 0;
+        }
+
+        .index ul li a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .index ul li a:hover {
+            color: #2980b9;
+        }
+
+        /* Link to home */
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-home a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .back-home a:hover {
+            color: #2980b9;
+        }
+
+        /* Section styles */
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .back-home a {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Styling for the Show Code button */
+        button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 15px;
+        }
+
+        /* Button hover effect */
+        button:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        }
+
+        /* Add spacing between button and next paragraph */
+        button + p {
+        margin-top: 20px;
+        }
+
+        /* Style for the code block when it is shown */
+        pre {
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+        }
+
+        /* Code block indentation */
+        code {
+        font-family: 'Courier New', monospace;
+        font-size: 0.95em;
+        }
+
+    </style>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        svg: { fontCache: 'global' }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <!-- Link per tornare alla home -->
+        <div class="back-home">
+            <a href="index.html">&larr; <strong>Back to Home</strong></a>
+        </div>
+
+        <h1>Statistics - Homework 3</h1>
+
+        <section id="theory">
+            <div class="theory-header">
+                <h2>Theory</h2>
+                <a class="go-practice" href="#practice">Go to Practice</a>
+            </div>
+            
+            <h3>The Median Minimizes the Sum of Absolute Deviations</h3>
+            <p>
+                To formally illustrate why the median minimizes the sum of absolute deviations, consider a set of ordered data points 
+                \( x_1 \leq x_2 \leq \dots \leq x_n \) and let \( c \) be any value.
+            </p>
+
+            <h4>Step 1: Define the Objective Function</h4>
+            <p>
+                The function we are interested in minimizing is:
+            </p>
+
+            <p>
+                \( S(c) = \sum_{i=1}^{n} |x_i - c| \).
+            </p>
+
+            <p>
+                This is the sum of the absolute differences between each data point \( x_i \) and a chosen point \( c \).
+            </p>
+
+            <h4>Step 2: Properties of Absolute Value</h4>
+            <p>
+                To simplify, notice that the absolute value function has a characteristic "kink" at the data points \( x_i \). The absolute deviation function \( |x_i - c| \) is piecewise linear, with different slopes depending on whether \( c \) is less greater than \( x_i \):
+            </p>
+            <ul>
+                <li>When \( c < x_i \), the function \( |x_i - c| = x_i - c \), and its derivative is \(-1\).</li>
+                <li>When \( c > x_i \), the function \( |x_i - c| = c - x_i \), and its derivative is \( 1 \).</li>
+            </ul>
+            <p></p>
+
+            <p>
+                At each data point, the derivative changes discontinuously.
+            </p>
+
+            <h4>Step 3: Minimize the Objective Function</h4>
+            <p>
+                To minimize \( S(c) \),  we can examine how the sum of the slopes behaves as \( c \) varies:
+            </p>
+            <ul>
+                <li>If \( c \) is less than the median, more than half of the data points will have a positive slope.</li>
+                <li>If \( c \) is greater than the median, more than half of the data points will have a negative slope.</li>
+                <li>At the median, the slopes from both sides cancel out, balancing the function.</li>
+            </ul>
+            <p></p>
+            <p>
+                Therefore, the median is the value of \( c \) where the sum of absolute deviations \( S(c) \) reaches its minimum.
+            </p>
+
+
+            <h3>Definitions of "Location" in Statistics</h3>
+
+<p>
+    When we talk about "location" or "central tendency" in statistics, we refer to a measure that summarizes a set of data by identifying a central point within the distribution. Here are various ways to define location statistics, showcasing how these ideas can lead to potential generalizations.
+</p>
+
+<h4>1. Arithmetic Mean</h4>
+<p>
+    The arithmetic mean (or average) is the sum of all values divided by the number of values:
+</p>
+<p>
+    \[
+    \text{Mean} = \frac{1}{n} \sum_{i=1}^n x_i
+    \]
+</p>
+<p>
+    <strong>Generalization:</strong> Change the linear combination of the data points, such as using weighted means or power means (including the geometric mean as a special case). This allows us to adjust the sensitivity of the mean to different portions of the data.
+</p>
+
+<h4>2. Median</h4>
+<p>
+    The median is the value that separates the data into two equal parts: 50% of values are below and 50% above:
+</p>
+<p>
+    \[
+    \text{Median} = \text{middle value of sorted data}
+    \]
+</p>
+<p>
+    <strong>Generalization:</strong> Quantiles extend the idea to values that divide the distribution into arbitrary proportions (e.g., quartiles, deciles), and trimmed or Winsorized means, where certain portions of the data are ignored or down-weighted.
+</p>
+
+<h4>3. Mode</h4>
+<p>
+    The mode is the most frequent value in the dataset:
+</p>
+<p>
+    \[
+    \text{Mode} = \arg\max_x f(x) \quad \text{where } f(x) \text{ is the frequency function.}
+    \]
+</p>
+<p>
+    <strong>Generalization:</strong> Kernel density estimates or smoothers can generalize the idea of the mode to non-discrete data. In continuous distributions, the mode can be extended to the local maxima of probability density functions.
+</p>
+
+<h4>4. Geometric Mean</h4>
+<p>
+    For positive numbers, the geometric mean is the nth root of the product of all values:
+</p>
+<p>
+    \[
+    \text{Geometric Mean} = \left( \prod_{i=1}^n x_i \right)^{1/n}
+    \]
+</p>
+<p>
+    <strong>Generalization:</strong> One can use different exponents or other functional transformations of data points before averaging, leading to other means (e.g., harmonic mean).
+</p>
+
+<h4>5. Harmonic Mean</h4>
+<p>
+    The harmonic mean is the reciprocal of the arithmetic mean of the reciprocals of the data:
+</p>
+<p>
+    \[
+    \text{Harmonic Mean} = \frac{n}{\sum_{i=1}^n \frac{1}{x_i}}
+    \]
+</p>
+<p>
+    <strong>Generalization:</strong> Different powers of the data could be used to emphasize certain parts of the distribution (e.g., power means), or harmonic means could be generalized to matrix-valued functions in multivariate cases.
+</p>
+
+<h4>6. Midrange</h4>
+<p>
+    The midrange is the average of the maximum and minimum values:
+</p>
+<p>
+    \[
+    \text{Midrange} = \frac{\max(x) + \min(x)}{2}
+    \]
+</p>
+<p>
+    <strong>Generalization:</strong> Instead of using the minimum and maximum, one could define central tendencies based on any percentile pairs (e.g., the average of the 5th and 95th percentiles).
+</p>
+
+<h4>7. Trimmed Mean</h4>
+<p>
+    The trimmed mean is the mean after removing the highest and lowest values (or a percentage of them):
+</p>
+<p>
+    \[
+    \text{Trimmed Mean}_\alpha = \frac{1}{n-2\alpha n} \sum_{i=\alpha n}^{(1-\alpha) n} x_i
+    \]
+</p>
+<p>
+    <strong>Generalization:</strong> Varying the percentage of trimming or incorporating a smooth weighting scheme (such as a Tukey biweight) generalizes this idea to robust statistics that reduce the influence of outliers.
+</p>
+
+<h4>8. Winsorized Mean</h4>
+<p>
+    Similar to trimmed means, but instead of removing values, extreme values are replaced by the closest retained values:
+</p>
+<p>
+    \[
+    \text{Winsorized Mean}_\alpha = \frac{1}{n} \sum_{i=1}^{n} \tilde{x}_i
+    \]
+    where \(\tilde{x}_i\) are adjusted values after Winsorization.
+</p>
+<p>
+    <strong>Generalization:</strong> One can devise various ways to replace extreme values or even blend the Winsorized values with the original ones, creating hybrid schemes.
+</p>
+
+<h4>9. L-Statistics</h4>
+<p>
+    These are linear combinations of order statistics (e.g., percentiles). The median, trimmed means, and midrange are all special cases of L-statistics:
+</p>
+<p>
+    \[
+    L(x_1, x_2, ..., x_n) = \sum_{i=1}^{n} c_i x_{(i)}
+    \]
+</p>
+<p>
+    <strong>Generalization:</strong> Changing the coefficients \(c_i\) allows infinite possible central tendencies, such as weighting certain parts of the distribution more or less.
+</p>
+
+<h4>10. M-estimators</h4>
+<p>
+    These estimators generalize the idea of a mean by minimizing a robust loss function \(\rho(x)\):
+</p>
+<p>
+    \[
+    \hat{\theta} = \arg\min_\theta \sum_{i=1}^n \rho(x_i - \theta)
+    \]
+    where \(\rho(x)\) is a function chosen for robustness to outliers (e.g., Huber loss).
+</p>
+<p>
+    <strong>Generalization:</strong> The choice of \(\rho(x)\) leads to different estimators, and a virtually infinite number of such functions exist (e.g., Tukey’s biweight, Huber loss, Hampel's three-part function).
+</p>
+
+<h4>11. Centroid (in Geometry)</h4>
+<p>
+    In a geometric context, the centroid is the arithmetic mean of all points in a set, such as the center of mass in a physical system.
+</p>
+<p>
+    <strong>Generalization:</strong> The idea of "center" can be generalized to different spaces, including higher-dimensional spaces, manifolds, and graphs. One could use different definitions of distance to define alternative centers (e.g., the Fermat point or centroid on a graph).
+</p>
+
+<h3>Infinite Expansion via Computational Methods</h3>
+<h4>Functional Transformations</h4>
+<p>
+    Any function that aggregates or transforms the data could define a new measure of central tendency. For example, applying a nonlinear function \(f(x)\) to the data and then applying a traditional measure like the mean or median:
+</p>
+<p>
+    \[
+    \text{Location}_f = f^{-1}\left( \frac{1}{n} \sum_{i=1}^n f(x_i) \right)
+    \]
+</p>
+<p>
+    Different choices of \(f(x)\) lead to infinite possibilities (e.g., logarithmic transformation leading to the geometric mean, etc.).
+</p>
+
+<h4>Different Distance Metrics</h4>
+<p>
+    The choice of distance metric fundamentally alters the concept of central tendency. For example, using \(L_p\) norms or Mahalanobis distance leads to different definitions of central points in multivariate contexts.
+</p>
+
+<h4>Data-Driven Approaches</h4>
+<p>
+    Machine learning algorithms often define centers based on data clustering or embeddings. Methods such as k-means clustering, which seeks to minimize within-cluster variance, define a center based on the underlying structure of the data rather than strict statistical formulas.
+</p>
+
+<h4>Conclusion</h4>
+<p>
+    The concept of "location" in statistics is versatile and can be extended infinitely by modifying functions, distance metrics, and the underlying data structures. This ability to generalize opens a rich landscape of methods for understanding the central tendencies within diverse datasets.
+</p>
+
+
+        </section>
+
+        <section id="practice">
+            <div class="theory-header">
+                <h2>Practice</h2>
+                <a class="go-practice" href="#theory">Go to Theory</a>
+            </div>
+
+            <h3>Programming Exercise Overview</h3>
+            <p>
+                Refine your SDE simulator to simulate a continuous time process where we can have an attack (indicated with a jump of +1) at any time with a constant rate of attack. To create the approximation of time continuity subdivide your reference temporal window into numerous intervals of vanishing size dt = 1/n and to each infinitesimal interval assign a probability of a +1 "jump" (attack success) equal to Lambda * dt, where Lambda is a simulation parameter, having the meaning of expected total number of attacks in the reference period.
+            </p>
+            
+            <p></p>
+            <!-- Sections explaining the code with show/hide buttons -->
+            <h3>Code Explanation</h3>
+            <p>
+                Most of the code is the same as the previous homework. Below there are the only few relevant changes in this homework.
+            </p>
+
+            <!-- Section 1: Initial Setup -->
+            <h4>1. Simulation Setup</h4>
+            <p>
+                New variables must be initialised for the simulation: Lambda, dt, number of intervals and the total reference period.
+            </p>
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('setupCode')">Show Code</button>
+<div id="setupCode" style="display: none;">
+    <pre>
+        int m_attackers = 20; // Number of attackers
+        double Lambda = 4; // Expected total number of attacks in the reference period
+        int n_intervals = 1000; // Number of time subdivisions
+        double dt = 0.01; // Time step size
+        double total_time = n_intervals * dt; // Total reference period (normalized)
+        int[] final_penetrations = new int[m_attackers];
+    </pre>
+</div>
+
+<!-- Section 2: Simulation of Penetration -->
+<h4>2. Penetration Simulation</h4>
+<p>
+    The code below shows the new version of the function that simulates the penetrations of each attacker: if the randomly generated number is less than Lambda * dt, the number of penetrations made by the current attacker is increased by 1.
+</p>
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('simulationCode')">Show Code</button>
+<div id="simulationCode" style="display: none;">
+    <pre>
+        Random rand = new Random();
+
+        // Add series for each attacker
+        for (int attacker = 0; attacker < m_attackers; attacker++)
+        {
+            Series series = new Series("Attacker " + (attacker + 1));
+            series.ChartType = SeriesChartType.StepLine;
+            series.BorderWidth = 2;
+            series.Color = colors[attacker % colors.Length];
+
+            int current_penetration = 0; // Current penetration level for this attacker
+
+            // Simulate the penetration attempts for each time interval
+            for (int step = 0; step <= n_intervals; step++)
+            {
+                double time = step * dt;
+
+                // Random chance to have a successful attack (jump) in this interval
+                if (rand.NextDouble() < Lambda * dt)
+                {
+                    current_penetration++;
+                }
+
+                // Add point to the series
+                series.Points.AddXY(time, current_penetration);
+            }
+
+            // Store the final penetration for the attacker
+            final_penetrations[attacker] = current_penetration;
+            chart1.Series.Add(series);
+            }
+    </pre>
+</div>
+
+
+<h4>3. Final Result</h4>
+<p>
+    The screenshot below shows the output of the realized program, using the parameters <strong>m = 20</strong> for the attackers, <strong>Lambda = 4</strong>, <strong>number of intervals = 1000</strong>, <strong>total time = 10</strong>, <strong>dt = 0.01</strong>.
+</p>
+
+<a href="Homework3_charts.png" data-lightbox="result" data-title="Output of the program with m=20, Lambda=4, n_intervals=1000, tot_time=10, dt=0.01">
+    <img src="Homework3_charts.png" alt="Output of the program with m=20, Lambda=4, n_intervals=1000, tot_time=10, dt=0.01" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
+
+
+<script>
+    // JavaScript function to toggle visibility of code sections
+    function toggleCode(id) {
+        var codeBlock = document.getElementById(id);
+        if (codeBlock.style.display === "none") {
+            codeBlock.style.display = "block";
+        } else {
+            codeBlock.style.display = "none";
+        }
+    }
+</script>
+        
+        </section>
+        
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
+</body>
+</html>
