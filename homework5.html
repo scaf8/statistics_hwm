@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2/dist/css/lightbox.min.css" rel="stylesheet">
+    <title>Statistics - Homework 5</title>
+    <style>
+        /* Font Google Import */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 1000px; /* Aumentato per dare più spazio */
+            width: 100%;
+            position: relative;
+        }
+
+        h1 {
+            color: #34495e;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #34495e;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h3,h4 {
+            margin-bottom: 10px; /* Spazio tra il titolo e il paragrafo */
+        }
+
+        p {
+            margin-bottom: 20px; /* Spazio tra un paragrafo e l'altro */
+        }
+
+        .theory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Spazio tra il titolo/link e il resto del contenuto */
+}
+
+.go-practice {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.go-practice:hover {
+    color: #2980b9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .theory-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .go-practice {
+        margin-top: 10px;
+    }
+}
+
+        ul, ol {
+            padding-left: 20px; /* Aggiunge padding per allineare con il paragrafo */
+        }
+
+        .index {
+            margin-bottom: 40px;
+        }
+
+        .index ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .index ul li {
+            margin: 10px 0;
+        }
+
+        .index ul li a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .index ul li a:hover {
+            color: #2980b9;
+        }
+
+        /* Link to home */
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-home a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .back-home a:hover {
+            color: #2980b9;
+        }
+
+        /* Section styles */
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .back-home a {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Styling for the Show Code button */
+        button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 15px;
+        }
+
+        /* Button hover effect */
+        button:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        }
+
+        /* Add spacing between button and next paragraph */
+        button + p {
+        margin-top: 20px;
+        }
+
+        /* Style for the code block when it is shown */
+        pre {
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+        }
+
+        /* Code block indentation */
+        code {
+        font-family: 'Courier New', monospace;
+        font-size: 0.95em;
+        }
+
+    </style>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        svg: { fontCache: 'global' }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <!-- Link per tornare alla home -->
+        <div class="back-home">
+            <a href="index.html">&larr; <strong>Back to Home</strong></a>
+        </div>
+
+        <h1>Statistics - Homework 5</h1>
+
+        <section id="theory">
+            <div class="theory-header">
+                <h2>Theory</h2>
+                <a class="go-practice" href="#practice">Go to Practice</a>
+            </div>
+            
+            <h3>Proof of the Cauchy-Schwarz Inequality</h3>
+            
+            <p>The Cauchy-Schwarz inequality states that for any vectors \( \mathbf{u} \) and \( \mathbf{v} \) in an inner product space, we have:</p>
+    
+    <p style="text-align: center;">
+        \[
+        |\langle \mathbf{u}, \mathbf{v} \rangle| \leq \|\mathbf{u}\| \|\mathbf{v}\|,
+        \]
+    </p>
+    
+    <p>where \( \langle \mathbf{u}, \mathbf{v} \rangle \) denotes the inner product of \( \mathbf{u} \) and \( \mathbf{v} \), and \( \|\mathbf{u}\| \) and \( \|\mathbf{v}\| \) denote their norms.</p>
+    
+    <h4>Proof</h4>
+    
+    <ol>
+        <li><strong>Consider the squared expression:</strong>
+            <p>Define a parameter \( t \in \mathbb{R} \) and examine the norm squared of \( \mathbf{u} - t \mathbf{v} \):</p>
+            <p style="text-align: center;">
+                \[
+                \|\mathbf{u} - t \mathbf{v}\|^2 \geq 0.
+                \]
+            </p>
+            <p>This inequality holds because the squared norm of any vector is always non-negative.</p>
+        </li>
+        
+        <li><strong>Expand the squared norm:</strong>
+            <p>We can express the squared norm as:</p>
+            <p style="text-align: center;">
+                \[
+                \|\mathbf{u} - t \mathbf{v}\|^2 = \langle \mathbf{u} - t \mathbf{v}, \mathbf{u} - t \mathbf{v} \rangle.
+                \]
+            </p>
+            <p>Expanding this using the linearity of the inner product, we obtain:</p>
+            <p style="text-align: center;">
+                \[
+                \|\mathbf{u} - t \mathbf{v}\|^2 = \langle \mathbf{u}, \mathbf{u} \rangle - 2t \langle \mathbf{u}, \mathbf{v} \rangle + t^2 \langle \mathbf{v}, \mathbf{v} \rangle.
+                \]
+            </p>
+            <p>Simplifying, we find:</p>
+            <p style="text-align: center;">
+                \[
+                \|\mathbf{u} - t \mathbf{v}\|^2 = \|\mathbf{u}\|^2 - 2t \langle \mathbf{u}, \mathbf{v} \rangle + t^2 \|\mathbf{v}\|^2.
+                \]
+            </p>
+        </li>
+        
+        <li><strong>Set up a quadratic inequality:</strong>
+            <p>Since \( \|\mathbf{u} - t \mathbf{v}\|^2 \geq 0 \), we have:</p>
+            <p style="text-align: center;">
+                \[
+                \|\mathbf{u}\|^2 - 2t \langle \mathbf{u}, \mathbf{v} \rangle + t^2 \|\mathbf{v}\|^2 \geq 0.
+                \]
+            </p>
+            <p>This is a quadratic inequality in \( t \), and it must hold for all \( t \in \mathbb{R} \).</p>
+        </li>
+        
+        <li><strong>Apply the discriminant condition:</strong>
+            <p>For a quadratic expression \( at^2 + bt + c \geq 0 \) to hold for all \( t \), the discriminant must be non-positive. Here, the discriminant is:</p>
+            <p style="text-align: center;">
+                \[
+                (-2 \langle \mathbf{u}, \mathbf{v} \rangle)^2 - 4 \|\mathbf{v}\|^2 \|\mathbf{u}\|^2 \leq 0.
+                \]
+            </p>
+            <p>Simplifying, we get:</p>
+            <p style="text-align: center;">
+                \[
+                4 \langle \mathbf{u}, \mathbf{v} \rangle^2 \leq 4 \|\mathbf{u}\|^2 \|\mathbf{v}\|^2.
+                \]
+            </p>
+            <p>Dividing by 4, we find:</p>
+            <p style="text-align: center;">
+                \[
+                \langle \mathbf{u}, \mathbf{v} \rangle^2 \leq \|\mathbf{u}\|^2 \|\mathbf{v}\|^2.
+                \]
+            </p>
+        </li>
+        
+        <li><strong>Take the square root:</strong>
+            <p>Taking the square root of both sides (and noting that norms are non-negative), we get:</p>
+            <p style="text-align: center;">
+                \[
+                |\langle \mathbf{u}, \mathbf{v} \rangle| \leq \|\mathbf{u}\| \|\mathbf{v}\|,
+                \]
+            </p>
+            <p>which is the Cauchy-Schwarz inequality.</p>
+        </li>
+    </ol>
+
+
+    <h3>Concepts of Independence and Uncorrelation</h3>
+    
+    <p>In probability and statistics, <strong>independence</strong> and <strong>uncorrelation</strong> are concepts used to describe the relationship between two random variables, but they have distinct meanings and implications.</p>
+
+    <h4>1. Independence</h4>
+    <p>Two random variables \( X \) and \( Y \) are <em>independent</em> if knowing the outcome of one does not provide any information about the other. Mathematically, \( X \) and \( Y \) are independent if their joint probability distribution satisfies:</p>
+    <p style="text-align: center;">
+        \[
+        P(X \leq x, Y \leq y) = P(X \leq x) \cdot P(Y \leq y) \quad \text{for all } x, y.
+        \]
+    </p>
+    <p>For independent random variables, all moments (expectations of powers of the variables) factorize. This strong relationship implies that not only the means and variances are unaffected by each other, but so are all higher moments.</p>
+
+    <p><strong>Measures of Independence:</strong> Independence is generally verified through specific criteria, such as examining the joint and marginal distributions of \( X \) and \( Y \). However, in practice, true independence can be difficult to verify unless we know the complete joint distribution of the variables.</p>
+
+    <h4>2. Uncorrelation</h4>
+    <p>Two random variables \( X \) and \( Y \) are <em>uncorrelated</em> if their covariance is zero:</p>
+    <p style="text-align: center;">
+        \[
+        \text{Cov}(X, Y) = \mathbb{E}[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])] = 0.
+        \]
+    </p>
+    <p>This condition implies that \( X \) and \( Y \) have no linear relationship, meaning changes in one variable do not produce a consistent, linear change in the other. Uncorrelated variables might still have nonlinear dependencies, so uncorrelation is a weaker condition than independence.</p>
+    
+    <p><strong>Measures of Uncorrelation:</strong> The covariance or, equivalently, the <em>correlation coefficient</em> is typically used to measure uncorrelation. The correlation coefficient \( \rho \) is defined as:</p>
+    <p style="text-align: center;">
+        \[
+        \rho_{X,Y} = \frac{\text{Cov}(X, Y)}{\sqrt{\text{Var}(X) \cdot \text{Var}(Y)}}.
+        \]
+    </p>
+    <p>If \( \rho_{X,Y} = 0 \), \( X \) and \( Y \) are uncorrelated.</p>
+
+    <h4>3. Conceptual Differences</h4>
+    <p>The main distinction between independence and uncorrelation is that independence is a <em>stronger</em> condition than uncorrelation:</p>
+    
+    <ul>
+        <li>If \( X \) and \( Y \) are independent, they are also uncorrelated (with \( \text{Cov}(X, Y) = 0 \)).</li>
+        <li>If \( X \) and \( Y \) are uncorrelated, they are <em>not necessarily</em> independent. Uncorrelated variables can still exhibit nonlinear dependence.</li>
+    </ul>
+    
+    <p>For example, if \( X \) is a standard normal variable and \( Y = X^2 \), then \( X \) and \( Y \) are uncorrelated (since their covariance is zero) but <em>not independent</em>, as knowing \( X \) determines \( Y \).</p>
+    
+    <h4>4. Practical Implications</h4>
+    <p>Understanding the difference between independence and uncorrelation is important in statistical modeling and data analysis:</p>
+    
+    <ul>
+        <li><strong>In regression and machine learning:</strong> Uncorrelated features may help reduce multicollinearity, but independent features provide even stronger separation of information.</li>
+        <li><strong>In time series analysis:</strong> Uncorrelation is a key assumption for white noise processes, while independence is assumed for strong white noise.</li>
+    </ul>
+
+
+
+        </section>
+
+        <section id="practice">
+            <div class="theory-header">
+                <h2>Practice</h2>
+                <a class="go-practice" href="#theory">Go to Theory</a>
+            </div>
+
+            <h3>Programming Exercise Overview</h3>
+            <p>
+                Enhance your existing Euler-Maruyama (E-M) simulator by developing a unified simulation framework. Create a general central class that can possibly manage various types of stochastic differential equations (SDEs).
+            </p>
+            
+            <p></p>
+            <!-- Sections explaining the code with show/hide buttons -->
+            <h3>Code Explanation</h3>
+            <p>
+                Most of the code is the same as the previous homeworks, in particular the logic of the various types of simulation. Therefore, the code was modified by creating a general method that in turn calls specific functions to process the data.
+            </p>
+
+<p>
+    The code below shows the new method just described: RunSimulation().
+</p>
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('simulationCode')">Show Code</button>
+<div id="simulationCode" style="display: none;">
+    <pre>
+        private void RunSimulation(string sdeType, int nServers, int mAttackers, double pPenetration, int TTime, int nIntervals, double lambda)
+        {
+            // Clear previous data and set up the chart model
+            plotView.Model.Series.Clear();
+            plotView.Model.Axes.Clear();
+            plotView.Model.Title = "SDE Simulator";
+
+            Random rnd = new Random();
+
+            switch (sdeType)
+            {
+                case "Bernoulli":
+                    SimulateBernoulli(nServers, mAttackers, pPenetration, rnd);
+                    break;
+
+                case "Random Walk":
+                    SimulateRandomWalk(nServers, mAttackers, pPenetration, rnd);
+                    break;
+
+                case "Poisson":
+                    SimulatePoisson(TTime, nIntervals, mAttackers, lambda, rnd);
+                    break;
+
+                case "Brownian Motion":
+                    SimulateBrownianMotion(TTime, nIntervals, mAttackers, pPenetration, rnd);
+                    break;
+            }
+
+            // Set X and Y axis labels
+            plotView.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom, Title = "Time" });
+            plotView.Model.Axes.Add(new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Left, Title = "Position" });
+
+            // Refresh the chart
+            plotView.Model.InvalidatePlot(true);
+        }
+    </pre>
+</div>
+
+
+<h4>Final Result</h4>
+<p>
+    The screenshots below show the output of the realized program. A user interface was added to make it easier to enter data and choose the type of simulation. 
+</p>
+
+<a href="HW5_Bernoulli.png" data-lightbox="result">
+    <img src="HW5_Bernoulli.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
+
+<a href="HW5_RandWalk.png" data-lightbox="result">
+    <img src="HW5_RandWalk.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
+
+<a href="HW5_Poisson.png" data-lightbox="result">
+    <img src="HW5_Poisson.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
+
+<a href="HW5_BrownianMotion.png" data-lightbox="result">
+    <img src="HW5_BrownianMotion.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
+
+
+<script>
+    // JavaScript function to toggle visibility of code sections
+    function toggleCode(id) {
+        var codeBlock = document.getElementById(id);
+        if (codeBlock.style.display === "none") {
+            codeBlock.style.display = "block";
+        } else {
+            codeBlock.style.display = "none";
+        }
+    }
+</script>
+        
+        </section>
+        
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
+</body>
+</html>
