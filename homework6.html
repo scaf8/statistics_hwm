@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2/dist/css/lightbox.min.css" rel="stylesheet">
+    <title>Statistics - Homework 6</title>
+    <style>
+        /* Font Google Import */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 1000px; /* Aumentato per dare più spazio */
+            width: 100%;
+            position: relative;
+        }
+
+        h1 {
+            color: #34495e;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #34495e;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h3,h4 {
+            margin-bottom: 10px; /* Spazio tra il titolo e il paragrafo */
+        }
+
+        p {
+            margin-bottom: 20px; /* Spazio tra un paragrafo e l'altro */
+        }
+
+        .theory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Spazio tra il titolo/link e il resto del contenuto */
+}
+
+.go-practice {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.go-practice:hover {
+    color: #2980b9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .theory-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .go-practice {
+        margin-top: 10px;
+    }
+}
+
+        ul, ol {
+            padding-left: 20px; /* Aggiunge padding per allineare con il paragrafo */
+        }
+
+        .index {
+            margin-bottom: 40px;
+        }
+
+        .index ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .index ul li {
+            margin: 10px 0;
+        }
+
+        .index ul li a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .index ul li a:hover {
+            color: #2980b9;
+        }
+
+        /* Link to home */
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-home a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .back-home a:hover {
+            color: #2980b9;
+        }
+
+        /* Section styles */
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .back-home a {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Styling for the Show Code button */
+        button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 15px;
+        }
+
+        /* Button hover effect */
+        button:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        }
+
+        /* Add spacing between button and next paragraph */
+        button + p {
+        margin-top: 20px;
+        }
+
+        /* Style for the code block when it is shown */
+        pre {
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+        }
+
+        /* Code block indentation */
+        code {
+        font-family: 'Courier New', monospace;
+        font-size: 0.95em;
+        }
+
+    </style>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        svg: { fontCache: 'global' }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <!-- Link per tornare alla home -->
+        <div class="back-home">
+            <a href="index.html">&larr; <strong>Back to Home</strong></a>
+        </div>
+
+        <h1>Statistics - Homework 6</h1>
+    
+        <section id="theory">
+            <div class="theory-header">
+                <h2>Theory</h2>
+                <a class="go-practice" href="#practice">Go to Practice</a>
+            </div>
+            
+            <h3>Fundamental Theorem of Calculus</h3>
+    <p>The Fundamental Theorem of Calculus (FTC) connects differentiation and integration and consists of two main parts:</p>
+    <ul>
+        <li>
+            <strong>First Part:</strong> If \( f \) is continuous on the interval \([a, b]\) and \( F \) is defined by 
+            \( F(x) = \int_a^x f(t) \, dt \) for \( x \) in \([a, b]\), then \( F \) is continuous on \([a, b]\), differentiable on 
+            \((a, b)\), and \( F'(x) = f(x) \):
+            \[
+            \frac{d}{dx} \left( \int_a^x f(t) \, dt \right) = f(x).
+            \]
+        </li>
+        <li>
+            <strong>Second Part:</strong> If \( F \) is an antiderivative of \( f \) on \([a, b]\), then:
+            \[
+            \int_a^b f(x) \, dx = F(b) - F(a).
+            \]
+        </li>
+    </ul>
+
+    <h3>Relationship with Density Functions and Cumulative Distribution Functions (CDFs)</h3>
+    <p>In probability theory, the FTC can be used to explain the relationship between a <strong>probability density function (PDF)</strong> 
+    and a <strong>cumulative distribution function (CDF)</strong>:</p>
+    <ul>
+        <li><strong>PDF:</strong> A PDF \( f(x) \) represents the likelihood of a continuous random variable \( X \) taking on a specific value.</li>
+        <li><strong>CDF:</strong> The CDF \( F(x) \) gives the probability that \( X \) is less than or equal to \( x \) and is defined by:
+            \[
+            F(x) = \int_{-\infty}^x f(t) \, dt.
+            \]
+        </li>
+    </ul>
+
+    <h3>Using the Fundamental Theorem of Calculus</h3>
+    <p>By the FTC, if \( F(x) \) is the CDF of a continuous random variable with PDF \( f(x) \), then the PDF is the derivative of the CDF:
+    \[
+    f(x) = \frac{d}{dx} F(x).
+    \]
+    This shows:
+    <ul>
+        <li>The CDF \( F(x) \) can be obtained by integrating the PDF \( f(x) \).</li>
+        <li>The PDF \( f(x) \) can be derived by differentiating the CDF \( F(x) \).</li>
+    </ul>
+    </p>
+
+    <h3>Demonstration</h3>
+    <p>Given a random variable \( X \) with a PDF \( f(x) \), the CDF \( F(x) \) is:
+    \[
+    F(x) = \int_{-\infty}^x f(t) \, dt.
+    \]
+    By the <strong>First Part of the FTC</strong>, differentiating \( F(x) \) yields:
+    \[
+    \frac{d}{dx} F(x) = f(x).
+    \]
+    Conversely, integrating the PDF over an interval gives:
+    \[
+    F(b) - F(a) = \int_a^b f(x) \, dx.
+    \]
+    </p>
+
+    <h3>Example</h3>
+    <p>Consider a random variable \( X \) with a PDF \( f(x) = 2x \) for \( 0 \leq x \leq 1 \) and \( f(x) = 0 \) otherwise. The CDF \( F(x) \) for 
+    \( 0 \leq x \leq 1 \) is:
+    \[
+    F(x) = \int_0^x 2t \, dt = t^2 \Big|_0^x = x^2.
+    \]
+    Differentiating \( F(x) \) gives:
+    \[
+    \frac{d}{dx} F(x) = \frac{d}{dx} (x^2) = 2x = f(x).
+    \]
+    This confirms the relationship between the CDF and PDF as described by the Fundamental Theorem of Calculus.
+    </p>
+
+        </section>
+
+        <section id="practice">
+            <div class="theory-header">
+                <h2>Practice</h2>
+                <a class="go-practice" href="#theory">Go to Theory</a>
+            </div>
+
+            <h3>Programming Exercise Overview</h3>
+            <p>
+                Generate realizations from a discrete univariate probability distribution with arbitrary probabilities. Graphically show the convergence of the empirical distribution to the theoretical distribution as the sample size increases. Compute also, during the generation, the mean and variance using recursive methods (e.g., Knuth's/Welford's algorithms) and compare these results with the theoretical mean and variance, discussing the relationship.
+            </p>
+            
+            <p></p>
+            <!-- Sections explaining the code with show/hide buttons -->
+            <h3>Code Explanation</h3>
+            <p>
+                To visualise the difference between theoretical distributions and empirical distributions derived from random sampling, I chose to proceed in the following way.
+                <br>
+                When the application is started, the diagram is initialised and the timer starts running. So every turn of the timer (500 ms):
+                <ol>
+                    <li>A new sample is generated according to the specified probability distribution.</li>
+                    <li>The counts and sample size are updated.</li>
+                    <li>Mean and variance are calculated recursively.</li>
+                    <li>The graphic display is updated to show both the empirical and theoretical distribution.</li>
+                    <li>Current statistics are displayed in the user interface.</li>
+                </ol>
+            </p>
+
+<p>
+    The function that handles this is called timer1_Tick(), and is shown below.
+</p>
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('simulationCode')">Show Code</button>
+<div id="simulationCode" style="display: none;">
+    <pre>
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // Generate a sample
+            int sample = GenerateSample();
+
+            // Update counts and sample size
+            if (!counts.ContainsKey(sample))
+                counts[sample] = 0;
+            counts[sample]++;
+            sampleSize++;
+
+            // Update recursive mean and variance
+            UpdateStatistics(sample);
+
+            // Update plot
+            UpdateEmpiricalSeries();
+            UpdateTheoreticalSeries();
+
+            // Display current statistics
+            double variance = count > 1 ? m2 / (count - 1) : 0;
+            lblSampleSize.Text = $"Sample Size: {sampleSize}";
+            lblMean.Text = $"Mean: {mean:F2}";
+            lblVariance.Text = $"Variance: {variance:F2}";
+        }
+    </pre>
+</div>
+
+<p>
+    In detail, the functions for generating the sample and updating the graph and statistics are shown below.
+</p>
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('simulationCode2')">Show Code</button>
+<div id="simulationCode2" style="display: none;">
+    <pre>
+        private int GenerateSample()
+        {
+            double r = random.NextDouble();
+            double cumulative = 0.0;
+
+            for (int i = 0; i < probabilities.Count; i++)
+            {
+                cumulative += probabilities[i];
+                if (r < cumulative)
+                {
+                    return i;
+                }
+            }
+
+            return probabilities.Count - 1; // should never happen if probabilities sum to 1
+        }
+
+        private void UpdateTheoreticalSeries()
+        {
+            var theoreticalSeries = plotModel.Series[1] as BarSeries;
+            theoreticalSeries.Items.Clear();
+            foreach (var prob in probabilities)
+            {
+                theoreticalSeries.Items.Add(new BarItem { Value = prob * sampleSize });
+            }
+            plotModel.InvalidatePlot(true);
+        }
+
+        private void UpdateEmpiricalSeries()
+        {
+            var empiricalSeries = plotModel.Series[0] as BarSeries;
+            empiricalSeries.Items.Clear();
+            foreach (var prob in probabilities)
+            {
+                int index = probabilities.IndexOf(prob);
+                empiricalSeries.Items.Add(new BarItem { Value = counts.ContainsKey(index) ? counts[index] : 0 });
+            }
+            plotModel.InvalidatePlot(true);
+        }
+
+        private void UpdateStatistics(int newValue)
+        {
+            count++;
+            double delta = newValue - mean;
+            mean += delta / count;
+            m2 += delta * (newValue - mean);
+        }
+    </pre>
+</div>
+
+<h4>Final Result</h4>
+<p>
+    Here is a video demonstration of the output of the realized program. Three different probabilities were chosen as examples for the simulation: 0.2, 0.3 and 0.5. The theoretical distribution is shown in orange, while the empirical distribution is shown in green. It can be seen that, with the passage of time (i.e. as the number of samples increases), the empirical distribution converges towards the theoretical one as expected.
+</p>
+
+<video controls width="100%" style="margin: 20px 0;">
+    <source src="Homework6_video.mp4" type="video/mp4">
+    Il tuo browser non supporta il tag video.
+</video>
+
+<script>
+    // JavaScript function to toggle visibility of code sections
+    function toggleCode(id) {
+        var codeBlock = document.getElementById(id);
+        if (codeBlock.style.display === "none") {
+            codeBlock.style.display = "block";
+        } else {
+            codeBlock.style.display = "none";
+        }
+    }
+</script>
+        
+        </section>
+        
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
+</body>
+</html>
