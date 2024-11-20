@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2/dist/css/lightbox.min.css" rel="stylesheet">
+    <title>Statistics - Homework 7</title>
+    <style>
+        /* Font Google Import */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 1000px; /* Aumentato per dare più spazio */
+            width: 100%;
+            position: relative;
+        }
+
+        h1 {
+            color: #34495e;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #34495e;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h3,h4 {
+            margin-bottom: 10px; /* Spazio tra il titolo e il paragrafo */
+        }
+
+        p {
+            margin-bottom: 20px; /* Spazio tra un paragrafo e l'altro */
+        }
+
+        .theory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Spazio tra il titolo/link e il resto del contenuto */
+}
+
+.go-practice {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.go-practice:hover {
+    color: #2980b9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .theory-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .go-practice {
+        margin-top: 10px;
+    }
+}
+
+        ul, ol {
+            padding-left: 20px; /* Aggiunge padding per allineare con il paragrafo */
+        }
+
+        .index {
+            margin-bottom: 40px;
+        }
+
+        .index ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .index ul li {
+            margin: 10px 0;
+        }
+
+        .index ul li a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .index ul li a:hover {
+            color: #2980b9;
+        }
+
+        /* Link to home */
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-home a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .back-home a:hover {
+            color: #2980b9;
+        }
+
+        /* Section styles */
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .back-home a {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Styling for the Show Code button */
+        button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 15px;
+        }
+
+        /* Button hover effect */
+        button:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        }
+
+        /* Add spacing between button and next paragraph */
+        button + p {
+        margin-top: 20px;
+        }
+
+        /* Style for the code block when it is shown */
+        pre {
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+        }
+
+        /* Code block indentation */
+        code {
+        font-family: 'Courier New', monospace;
+        font-size: 0.95em;
+        }
+
+    </style>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        svg: { fontCache: 'global' }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <!-- Link per tornare alla home -->
+        <div class="back-home">
+            <a href="index.html">&larr; <strong>Back to Home</strong></a>
+        </div>
+
+        <h1>Statistics - Homework 7</h1>
+
+        <section id="practice">
+            <div class="theory-header">
+                <h2>Practice</h2>
+                <a class="go-practice" href="#optional">Go to Optional Exercise</a>
+            </div>
+
+            <h3>Programming Exercise Overview</h3>
+            <p>
+                Using the setup of previous homework, from a discrete distribution generate m (e.g. m=1000 ...) samples of size n (e.g., n = 20, 30, 100, ...). Compute the distribution of the sampling average. Determine the average of the distribution of the averages of the samples, and the variance, discussing the observed relationship with the mean and variance of the parent (theoretical) distribution.
+            </p>
+            
+            
+            <!-- Sections explaining the code with show/hide buttons -->
+            <h3>Code Explanation</h3>
+            <p>
+                This application simulates the process of drawing samples from a discrete probability distribution, calculating the sample means, and visualizing the distribution of those means in a histogram. The user can specify how many samples (m) and how large each sample is (n), and the app will:
+                <ul>
+                    <li>Generate random samples.</li>
+                    <li>Calculate statistics (mean and variance) for the sample means.</li>
+                    <li>Display the distribution of the sample means in a plot.</li>
+                </ul>
+            </p>
+
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('simulationCode')">Show Code</button>
+<div id="simulationCode" style="display: none;">
+    <pre>
+        private void btnRunSimulation_Click(object sender, EventArgs e)
+        {
+            int m = int.Parse(txtM.Text); // Number of samples
+            int n = int.Parse(txtN.Text); // Size of each sample
+
+            List<double> sampleMeans = new List<double>();
+            for (int i = 0; i < m; i++)
+            {
+                List<int> sample = GenerateSample(n);
+                sampleMeans.Add(sample.Average());
+            }
+
+            double meanOfMeans = sampleMeans.Average();
+            double varianceOfMeans = Variance(sampleMeans);
+
+            UpdatePlot(sampleMeans);
+
+            lblMean.Text = $"Mean of Means: {meanOfMeans:F2}";
+            lblVariance.Text = $"Variance of Means: {varianceOfMeans:F2}";
+        }
+
+        private List<int> GenerateSample(int n)
+        {
+            var sample = new List<int>();
+            for (int i = 0; i < n; i++)
+            {
+                sample.Add(GenerateSingleEvent());
+            }
+            return sample;
+        }
+
+        private int GenerateSingleEvent()
+        {
+            double r = random.NextDouble();
+            double cumulative = 0.0;
+
+            for (int i = 0; i < probabilities.Count; i++)
+            {
+                cumulative += probabilities[i];
+                if (r < cumulative)
+                {
+                    return i;
+                }
+            }
+            return probabilities.Count - 1;
+        }
+
+        private double Variance(List<double> values)
+        {
+            double mean = values.Average();
+            return values.Sum(v => Math.Pow(v - mean, 2)) / (values.Count - 1);
+        }
+             
+    </pre>
+</div>
+
+
+<h3>Final Result</h3>
+<p>
+    The screenshots below show the output of the realized program, with 1000 samples of size 30, derived from the theoretical discrete parent distribution [0, 1, 2] with probabilities [0.2, 0.3, 0.5].
+    <br>
+    The mean of the sampling distribution is very close to the theoretical mean because the samples are drawn according to the parent distribution. This relationship holds true regardless of changes in the sample size (n) or the number of samples (m). Similarly, the variance of the sample mean distribution is smaller than the variance of the parent distribution. This reduction occurs because the variance of the sample mean decreases as the sample size (n) increases. 
+</p>
+
+<a href="HW7_samples.png" data-lightbox="result">
+    <img src="HW7_samples.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
+
+        </section>
+        
+        
+        <section id="optional">
+            <div class="theory-header">
+                <h2>Optional Exercise</h2>
+                <a class="go-practice" href="#practice">Go to Practice</a>
+            </div>
+
+            <h3>Exercise Overview</h3>
+            <p>
+                This exercise involves generating and analyzing the distributions of values resulting from modular exponentiation operations, followed by calculating the entropy of these distributions for two different cases. The goal is to observe how the entropy, a measure of randomness or unpredictability, varies based on different parameters and to compare the results between two different modular systems.               
+            </p>
+
+            <h3>Output Result and Analysis</h3>
+            <p>
+                The two cases represent different values for the modulus \( n \) and a set of base values \( g \) , leading to different distributions. In each case, the distributions are generated by calculating \( g^u \) mod \( n\) for \( u = 0, 1, 2, ..., maxU \) , were \( g\) is the base and \( n\) is the modulus. The entropy of each distribution is computed to assess the "spread" or uniformity of the results, with higher entropy indicating a more even distribution (more randomness) and lower entropy indicating a more clustered or predictable distribution.
+            </p>
+
+            <a href="HW7_optional.png" data-lightbox="result">
+                <img src="HW7_optional.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+            </a>
+
+            <p>
+                <strong>Entropy Differences:</strong><br>
+                In <strong>Case A</strong>, entropy values will likely be higher across most \( g \) values because the prime modulus \( n = 19 \) enables more evenly distributed values. Even if some values of \( g \) produce less random distributions, the overall entropy will tend to be higher.<br>
+                In <strong>Case B</strong>, entropy values will generally be lower due to the structure imposed by the non-prime modulus. The distributions will have more repetitive patterns, and the entropy will be smaller as a result.
+            </p>
+            
+            <p>
+                <strong>Practical Implications for Cryptography:</strong><br>
+                <strong>Higher Entropy (Case A):</strong> A higher entropy distribution is typically more desirable in cryptographic applications, as it indicates more uniform randomness, which is crucial for security (e.g., when generating keys or random numbers).<br>
+                <strong>Lower Entropy (Case B):</strong> A lower entropy distribution, on the other hand, may be less secure in cryptographic contexts because it suggests that the outcomes are more predictable or structured, making the system potentially more vulnerable to attacks.
+            </p>
+            
+            <p></p>
+            <!-- Sections explaining the code with show/hide buttons -->
+            <h3>Code Explanation</h3>
+            <p>
+                The following code was used to carry out this exercise. Specifically, the following actions are performed in succession: generation of distributions, calculation of entropies and display of results for both cases under consideration.
+            </p>
+
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('optionalcode')">Show Code</button>
+<div id="optionalcode" style="display: none;">
+    <pre>
+        private void btnGenerate_Click(object sender, EventArgs e)
+        {
+            // Define cases
+            int[] nValues = { 19, 15 };
+            int[][] gValues = {
+                new int[] { 2, 3, 10, 17 },
+                new int[] { 3, 6, 9, 12 }
+            };
+
+            // Clear previous entropy values
+            listEntropyCaseA.Items.Clear();
+            listEntropyCaseB.Items.Clear();
+
+            // Plot Case A
+            var modelCaseA = new PlotModel { Title = "Distibutions for Case A (n=19)" };
+            double totalEntropyA = 0.0;
+            int countA = 0;
+            foreach (int g in gValues[0])
+            {
+                var distribution = GenerateDistribution(nValues[0], g, 35);
+                    double entropy = CalculateEntropy(distribution);
+                listEntropyCaseA.Items.Add($"g = {g}, Entropy = {entropy:F2}");
+                AddSeriesToModel(modelCaseA, distribution, $"g={g} (Entropy: {entropy:F2})");
+
+                totalEntropyA += entropy;
+                countA++;
+            }
+            double meanEntropyA = totalEntropyA / countA;
+            listEntropyCaseA.Items.Add($"Total Entropy = {meanEntropyA:F2}");
+            plotViewCaseA.Model = modelCaseA;
+
+            // Plot Case B
+            var modelCaseB = new PlotModel { Title = "Distibutions for Case B (n=15)" };
+            double totalEntropyB = 0.0;
+            int countB = 0;
+            foreach (int g in gValues[1])
+            {
+                var distribution = GenerateDistribution(nValues[1], g, 35);
+                double entropy = CalculateEntropy(distribution);
+                listEntropyCaseB.Items.Add($"g = {g}, Entropy = {entropy:F2}");
+                AddSeriesToModel(modelCaseB, distribution, $"g={g} (Entropy: {entropy:F2})");
+        
+                totalEntropyB += entropy;
+                countB++;
+            }
+            double meanEntropyB = totalEntropyB / countB;
+            listEntropyCaseB.Items.Add($"Total Entropy = {meanEntropyB:F2}");
+            plotViewCaseB.Model = modelCaseB;
+        }
+
+
+        private Dictionary<int, int> GenerateDistribution(int n, int g, int maxU)
+        {
+            var distribution = new Dictionary<int, int>();
+
+            for (int u = 0; u < maxU; u++)
+            {
+                int y = (int)(Math.Pow(g, u) % n);
+                if (!distribution.ContainsKey(y))
+                {
+                    distribution[y] = 0;
+                }
+                distribution[y]++;
+            }
+
+            return distribution;
+        }
+
+    
+        private double CalculateEntropy(Dictionary<int, int> distribution)
+        {
+            int total = distribution.Values.Sum();
+            double entropy = 0.0;
+
+            foreach (var count in distribution.Values)
+            {
+                double probability = (double)count / total;
+                if (probability > 0)
+                {
+                    entropy -= probability * Math.Log(probability, 2);
+                }
+            }
+
+            return entropy;
+        }
+    </pre>
+</div>
+
+        
+        </section>
+
+
+
+        <script>
+            // JavaScript function to toggle visibility of code sections
+            function toggleCode(id) {
+                var codeBlock = document.getElementById(id);
+                if (codeBlock.style.display === "none") {
+                    codeBlock.style.display = "block";
+                } else {
+                    codeBlock.style.display = "none";
+                }
+            }
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
+</body>
+</html>
