@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2/dist/css/lightbox.min.css" rel="stylesheet">
+    <title>Statistics - Homework 8</title>
+    <style>
+        /* Font Google Import */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 1000px; /* Aumentato per dare più spazio */
+            width: 100%;
+            position: relative;
+        }
+
+        h1 {
+            color: #34495e;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #34495e;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h3,h4 {
+            margin-bottom: 10px; /* Spazio tra il titolo e il paragrafo */
+        }
+
+        p {
+            margin-bottom: 20px; /* Spazio tra un paragrafo e l'altro */
+        }
+
+        .theory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Spazio tra il titolo/link e il resto del contenuto */
+}
+
+.go-practice {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.go-practice:hover {
+    color: #2980b9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .theory-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .go-practice {
+        margin-top: 10px;
+    }
+}
+
+        ul, ol {
+            padding-left: 20px; /* Aggiunge padding per allineare con il paragrafo */
+        }
+
+        .index {
+            margin-bottom: 40px;
+        }
+
+        .index ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .index ul li {
+            margin: 10px 0;
+        }
+
+        .index ul li a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .index ul li a:hover {
+            color: #2980b9;
+        }
+
+        /* Link to home */
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-home a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .back-home a:hover {
+            color: #2980b9;
+        }
+
+        /* Section styles */
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .back-home a {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Styling for the Show Code button */
+        button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 15px;
+        }
+
+        /* Button hover effect */
+        button:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        }
+
+        /* Add spacing between button and next paragraph */
+        button + p {
+        margin-top: 20px;
+        }
+
+        /* Style for the code block when it is shown */
+        pre {
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+        }
+
+        /* Code block indentation */
+        code {
+        font-family: 'Courier New', monospace;
+        font-size: 0.95em;
+        }
+
+    </style>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        svg: { fontCache: 'global' }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <!-- Link per tornare alla home -->
+        <div class="back-home">
+            <a href="index.html">&larr; <strong>Back to Home</strong></a>
+        </div>
+
+        <h1>Statistics - Homework 8</h1>
+    
+        <section id="theory">
+            <div class="theory-header">
+                <h2>Theory</h2>
+                <a class="go-practice" href="#practice">Go to Practice</a>
+            </div>
+            
+            <h3>Notion of Shannon Entropy</h3>
+    <p>
+        Shannon entropy \(H\) measures the uncertainty or randomness of a discrete probability distribution. It is defined as:
+    </p>
+    <p>
+        \[
+        H(X) = -\sum_{i} p_i \log_b p_i
+        \]
+    </p>
+    <p>
+        Where:
+        <ul>
+            <li>\(p_i\): The probability of the \(i\)-th event.</li>
+            <li>\(b\): The base of the logarithm (commonly 2 for bits, \(e\) for natural units, or 10).</li>
+        </ul>
+        If \(p_i = 0\), the term \(p_i \log_b p_i\) is defined as 0 (since \(\lim_{x \to 0} x \log x = 0\)).
+    </p>
+    <p><strong>Interpretation:</strong> Higher entropy indicates a more uniform or unpredictable distribution, while lower entropy suggests certain outcomes are more predictable.</p>
+    
+    <h3>Other Diversity Measures</h3>
+    <p>
+        <strong>a. Simpson Index:</strong> Measures the probability that two randomly selected individuals belong to the same category:
+    </p>
+    <p>
+        \[
+        D = \sum_{i} p_i^2
+        \]
+    </p>
+    <p>
+        Variants of the Simpson Index include:
+        <ul>
+            <li>\(1 - D\): Probability that two randomly chosen individuals belong to different categories.</li>
+            <li>\(\frac{1}{D}\): Effective number of categories (inverse Simpson index).</li>
+        </ul>
+    </p>
+    
+    <p>
+        <strong>b. Rényi Entropy:</strong> A generalization of Shannon entropy:
+    </p>
+    <p>
+        \[
+        H_\alpha(X) = \frac{1}{1 - \alpha} \log_b \left( \sum_{i} p_i^\alpha \right)
+        \]
+    </p>
+    <p>
+        Where:
+        <ul>
+            <li>\(\alpha\): Order of the entropy.</li>
+            <li>\(\alpha = 1\): Reduces to Shannon entropy.</li>
+            <li>\(\alpha \to \infty\): Sensitive to the largest probabilities (maximum probability).</li>
+        </ul>
+    </p>
+    
+    <p>
+        <strong>c. Hill Numbers:</strong> Provide a unified diversity metric that incorporates multiple measures:
+    </p>
+    <p>
+        \[
+        ^qD = \left( \sum_{i} p_i^q \right)^{\frac{1}{1-q}}
+        \]
+    </p>
+    <p>
+        Where:
+        <ul>
+            <li>\(q = 1\): Reduces to the exponential of Shannon entropy (\(e^H\)).</li>
+            <li>\(q = 2\): Equivalent to the inverse Simpson index.</li>
+        </ul>
+    </p>
+    
+    <p>
+        <strong>d. Gini-Simpson Index:</strong> Defined as \(1 - D\), where \(D\) is the Simpson index:
+    </p>
+    <p>
+        \[
+        G = 1 - \sum_{i} p_i^2
+        \]
+    </p>
+    <p>
+        It represents the probability of picking two individuals from different categories.
+    </p>
+    
+    <h3>Applications in Cryptography</h3>
+    <p>
+        In cryptographic analysis, these measures are used to evaluate:
+        <ul>
+            <li><strong>Keyspace Distribution:</strong> Shannon entropy helps assess whether keys are uniformly distributed.</li>
+            <li><strong>Side-Channel Resistance:</strong> Entropy indicates unpredictability, which correlates with resilience to attacks.</li>
+            <li><strong>Randomness of Outputs:</strong> Metrics like Simpson's and Rényi's entropy are used to ensure a balanced and secure design in cryptographic functions.</li>
+        </ul>
+    </p>
+            
+
+        <h3>Notion of Primitive Root</h3>
+        <p>
+            A <strong>primitive root modulo \(p\)</strong> is defined as follows:
+        </p>
+        <p>
+            For a prime number \(p\), a number \(g\) is a primitive root modulo \(p\) if:
+        </p>
+        <p>
+            <ul>
+                <li>\(g\) is coprime to \(p\) (i.e., \(\gcd(g, p) = 1\)), and</li>
+                <li>The powers of \(g\), reduced modulo \(p\), generate all the integers in the multiplicative group \(\{1, 2, \dots, p-1\}\).</li>
+            </ul>
+        </p>
+        <p>
+            In other words:
+            \[
+            g^k \mod p \quad \text{produces every integer from \(1\) to \(p-1\), for \(k = 0, 1, \dots, p-2\)}.
+            \]
+        </p>
+        
+        <h4>Key Properties</h4>
+        <ul>
+            <li><strong>Cyclic Property:</strong> If \(g\) is a primitive root modulo \(p\), then the multiplicative group \(\{1, 2, \dots, p-1\}\) is cyclic, with \(g\) as a generator.</li>
+            <li><strong>Order of \(g\):</strong> The smallest integer \(d\) such that \(g^d \equiv 1 \mod p\) is the <em>order of \(g\)</em>. If \(g\) is a primitive root, its order is exactly \(p-1\).</li>
+            <li><strong>Existence:</strong> For every prime number \(p\), there exists at least one primitive root modulo \(p\).</li>
+            <li><strong>Number of Primitive Roots:</strong> The number of primitive roots modulo \(p\) is \(\phi(p-1)\), where \(\phi\) is Euler's totient function.</li>
+        </ul>
+        
+        <h4>Example</h4>
+        <p>
+            Let \(p = 7\). The integers coprime to \(7\) are \(\{1, 2, 3, 4, 5, 6\}\). The candidate \(g = 3\) can be checked as follows:
+        </p>
+        <p>
+            \[
+            \begin{align*}
+            3^1 & \equiv 3 \mod 7, \\
+            3^2 & \equiv 9 \equiv 2 \mod 7, \\
+            3^3 & \equiv 27 \equiv 6 \mod 7, \\
+            3^4 & \equiv 81 \equiv 4 \mod 7, \\
+            3^5 & \equiv 243 \equiv 5 \mod 7, \\
+            3^6 & \equiv 729 \equiv 1 \mod 7.
+            \end{align*}
+            \]
+        </p>
+        <p>
+            The sequence \(\{3, 2, 6, 4, 5, 1\}\) contains all integers from \(1\) to \(6\), so \(3\) is a primitive root modulo \(7\).
+        </p>
+
+
+        </section>
+
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
+</body>
+</html>
