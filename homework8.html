@@ -371,7 +371,160 @@
 
         </section>
 
+    </section>
+
+    <section id="practice">
+        <div class="theory-header">
+            <h2>Practice</h2>
+            <a class="go-practice" href="#theory">Go to Theory</a>
+        </div>
+
+        <h3>Part 1</h3>
+        <p>
+            Find and compile a sufficiently large piece of text by selecting several web pages and create a letter frequency distribution. Choose a random shift value (e.g., 1-25, with wrap-around) and apply the Caesar cipher to encrypt the original text: E = L + shift for each letter L of the message. Use frequency analysis or find any efficient and effective strategy to find the shift and decrypt the message.
+        </p>
+
+        <h3>Key Features</h3>
+    <ul>
+        <li>
+            <strong>Caesar Cipher Operations:</strong>
+            <ul>
+                <li><strong>Encryption:</strong> Encodes text using a random or user-specified shift value.</li>
+                <li><strong>Decryption via Frequency Analysis:</strong> Analyzes the letter frequency distribution of encrypted text to identify the most likely shift value and decodes it.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Frequency Analysis:</strong>
+            <ul>
+                <li>Calculates and visualizes the frequency of letters in the input or encrypted text.</li>
+                <li>Compares observed letter frequencies to typical English letter frequencies to measure deviation.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Graphical Visualization:</strong>
+            <ul>
+                <li>Uses a bar chart to display the letter frequency distribution of the analyzed text, with letters on the Y-axis and frequencies on the X-axis.</li>
+            </ul>
+        </li>
+    </ul>
+        
+        <p></p>
+        
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('simulationCode')">Show Code</button>
+<div id="simulationCode" style="display: none;">
+<pre>
+    private Dictionary<char, int> CalculateFrequency(string text)
+    {
+        var frequency = new Dictionary<char, int>();
+        foreach (char c in text)
+        {
+            if (char.IsLetter(c))
+            {
+                char upperC = char.ToUpper(c);
+                if (frequency.ContainsKey(upperC))
+                    frequency[upperC]++;
+                else
+                    frequency[upperC] = 1;
+            }
+        }
+        return frequency.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+    }
+
+
+    private double CompareFrequencyDistribution(Dictionary<char, int> frequency)
+    {
+        var englishFrequency = new Dictionary<char, double>
+        {
+            { 'E', 12.702 }, { 'T', 9.056 }, { 'A', 8.167 }, { 'O', 7.507 }, { 'I', 6.966 },
+            { 'N', 6.749 }, { 'S', 6.327 }, { 'H', 6.094 }, { 'R', 5.987 }, { 'D', 4.253 },
+            { 'L', 4.025 }, { 'U', 2.758 }, { 'C', 2.782 }, { 'M', 2.406 }, { 'F', 2.228 },
+            { 'Y', 2.024 }, { 'P', 1.929 }, { 'B', 1.492 }, { 'V', 0.978 }, { 'K', 0.772 },
+            { 'J', 0.153 }, { 'X', 0.150 }, { 'Q', 0.095 }, { 'Z', 0.074 }
+        };
+
+        // Calcola la frequenza relativa nel testo
+        double totalLetters = frequency.Values.Sum();
+        var relativeFrequency = frequency.ToDictionary(
+            pair => pair.Key,
+            pair => (double)pair.Value / totalLetters * 100 // frequenza relativa in percentuale
+        );
+
+        // Confronta la distribuzione con quella inglese
+        double score = 0;
+        foreach (var letter in englishFrequency.Keys)
+        {
+            if (relativeFrequency.ContainsKey(letter))
+            {
+                // Differenza quadratica tra la frequenza relativa nel testo e quella attesa
+                score += Math.Pow(relativeFrequency[letter] - englishFrequency[letter], 2);
+            }
+        }
+        return score;
+    }
+
+
+    private string Encrypt(string text, int shift)
+    {
+        return new string(text.Select(c =>
+        {
+            if (char.IsLetter(c))
+            {
+                char baseChar = char.IsUpper(c) ? 'A' : 'a';
+                return (char)((c - baseChar + shift) % 26 + baseChar);
+            }
+            return c;
+        }).ToArray());
+    }
+
+
+    private string DecryptUsingFrequencyAnalysis(string encryptedText, out int bestShift)
+    {
+        var bestScore = double.MaxValue;
+        bestShift = 0;
+
+        // Prova tutti gli shift da 0 a 25 e calcola la differenza di distribuzione
+        for (int shift = 0; shift < 26; shift++)
+        {
+            string decryptedText = Encrypt(encryptedText, -shift);
+            var frequency = CalculateFrequency(decryptedText);
+            double score = CompareFrequencyDistribution(frequency);
+
+            if (score < bestScore)
+            {
+                bestScore = score;
+                bestShift = shift;
+            }
+        }
+
+        // Decifra con il miglior shift
+        return Encrypt(encryptedText, (26 - bestShift));
+    }
+</pre>
+</div>
+
+<h3>Final Result</h3>
+<p>
+    Here is a screenshot that shows the ouput of the application. In the fist text box there is the original text, in the second box there is the encrypted text and in the third box there is the decrypted text using the guessed shift.
+</p>
+
+<a href="HW8_Caesar.png" data-lightbox="result">
+    <img src="HW8_Caesar.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
+
+<script>
+// JavaScript function to toggle visibility of code sections
+function toggleCode(id) {
+    var codeBlock = document.getElementById(id);
+    if (codeBlock.style.display === "none") {
+        codeBlock.style.display = "block";
+    } else {
+        codeBlock.style.display = "none";
+    }
+}
+</script>
     
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
 </body>
