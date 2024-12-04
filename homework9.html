@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2/dist/css/lightbox.min.css" rel="stylesheet">
+    <title>Statistics - Homework 9</title>
+    <style>
+        /* Font Google Import */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 1000px; /* Aumentato per dare più spazio */
+            width: 100%;
+            position: relative;
+        }
+
+        h1 {
+            color: #34495e;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #34495e;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h3,h4 {
+            margin-bottom: 10px; /* Spazio tra il titolo e il paragrafo */
+        }
+
+        p {
+            margin-bottom: 20px; /* Spazio tra un paragrafo e l'altro */
+        }
+
+        .theory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Spazio tra il titolo/link e il resto del contenuto */
+}
+
+.go-practice {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.go-practice:hover {
+    color: #2980b9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .theory-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .go-practice {
+        margin-top: 10px;
+    }
+}
+
+        ul, ol {
+            padding-left: 20px; /* Aggiunge padding per allineare con il paragrafo */
+        }
+
+        .index {
+            margin-bottom: 40px;
+        }
+
+        .index ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .index ul li {
+            margin: 10px 0;
+        }
+
+        .index ul li a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .index ul li a:hover {
+            color: #2980b9;
+        }
+
+        /* Link to home */
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-home a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .back-home a:hover {
+            color: #2980b9;
+        }
+
+        /* Section styles */
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .back-home a {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Styling for the Show Code button */
+        button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 15px;
+        }
+
+        /* Button hover effect */
+        button:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        }
+
+        /* Add spacing between button and next paragraph */
+        button + p {
+        margin-top: 20px;
+        }
+
+        /* Style for the code block when it is shown */
+        pre {
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+        }
+
+        /* Code block indentation */
+        code {
+        font-family: 'Courier New', monospace;
+        font-size: 0.95em;
+        }
+
+    </style>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        svg: { fontCache: 'global' }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <!-- Link per tornare alla home -->
+        <div class="back-home">
+            <a href="index.html">&larr; <strong>Back to Home</strong></a>
+        </div>
+
+        <h1>Statistics - Homework 9</h1>
+
+<section id="theory">
+    <div class="theory-header">
+        <h2>Theory</h2>
+        <a class="go-practice" href="#practice">Go to Practice</a>
+    </div>
+    
+    <h3>Properties of the Sampling Mean and Variance</h3>
+    <p>
+        The sampling mean \( \bar{X} \) and sampling variance \( S^2 \) are key statistics derived from a sample of size \( n \). Their main properties are:
+    </p>
+    <ul>
+        <li>
+            <strong>Sampling Mean:</strong>
+            <ul>
+                <li>\( \mathbb{E}[\bar{X}] = \mu \), where \( \mu \) is the population mean. This indicates that the sampling mean is an unbiased estimator of the population mean.</li>
+                <li>\( \text{Var}[\bar{X}] = \frac{\sigma^2}{n} \), where \( \sigma^2 \) is the population variance. The variance of the sampling mean decreases as the sample size increases.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Sampling Variance:</strong>
+            <ul>
+                <li>\( \mathbb{E}[S^2] = \sigma^2 \) (for the unbiased sample variance). This makes the sample variance an unbiased estimator of the population variance.</li>
+                <li>The distribution of \( S^2 \) depends on the sample size \( n \) and the underlying population distribution.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p></p>
+
+    <h3>Law of Large Numbers and Possible Applications</h3>
+    <p>
+        The Law of Large Numbers (LLN) states that as the sample size \( n \) increases, the sample mean \( \bar{X} \) converges to the population mean \( \mu \):
+    </p>
+    <div style="text-align: center;">
+        \[
+        \lim_{n \to \infty} \bar{X} = \mu
+        \]
+    </div>
+    <p>
+        This principle ensures that large samples provide reliable estimates of population parameters, which has applications across various fields.
+    </p>
+    <h4>Applications in Cybersecurity</h4>
+    <ul>
+        <li>
+            <strong>Entropy Estimation:</strong> In cryptographic systems, accurate estimation of entropy in random number generators ensures robust security. The LLN helps assess the expected entropy over multiple samples.
+        </li>
+        <li>
+            <strong>Anomaly Detection:</strong> Monitoring mean and variance of network traffic over time can reveal deviations indicative of attacks or intrusions.
+        </li>
+        <li>
+            <strong>Key Distribution Analysis:</strong> Evaluating uniformity in key distribution in cryptographic protocols ensures secure and unbiased key generation.
+        </li>
+        <li>
+            <strong>Side-Channel Attacks:</strong> LLN assists in analyzing large datasets of power or timing measurements to detect patterns and mitigate risks in cryptographic implementations.
+        </li>
+    </ul>
+</section>
+
+
+<section id="theory2">
+    <div class="theory-header">
+        <h2>Theory (optional)</h2>
+    </div>
+    
+    <h3>Encryption Methods and Statistical Properties</h3>
+    <p>
+        Encryption methods are fundamental to securing data in communications and storage. They transform plaintext into ciphertext, making the data unreadable without the correct decryption key. Below are the main encryption methods and their statistical properties:
+    </p>
+    
+    <h4>1. Substitution Ciphers</h4>
+    <p>
+        A substitution cipher replaces each letter or symbol in the plaintext with another. The most famous example is the Caesar cipher. 
+        Its statistical property is that frequency analysis can reveal patterns in the ciphertext, as the relative frequency of letters remains similar to that of the plaintext.
+    </p>
+    
+    <h4>2. Transposition Ciphers</h4>
+    <p>
+        A transposition cipher rearranges the letters in the plaintext according to a specific system. Unlike substitution ciphers, frequency distributions of letters remain unchanged, but their positions are shuffled. Analyzing the structure and patterns of ciphertext can still provide insights into the key.
+    </p>
+    
+    <h4>3. Symmetric Key Encryption (e.g., AES)</h4>
+    <p>
+        Symmetric encryption uses the same key for both encryption and decryption. The Advanced Encryption Standard (AES) is a widely used symmetric encryption method. Its statistical properties are designed to minimize patterns in the ciphertext, ensuring that it appears as random noise. Good encryption schemes, such as AES, make frequency analysis infeasible and ensure a low correlation between plaintext and ciphertext.
+    </p>
+    
+    <h4>4. Asymmetric Key Encryption (e.g., RSA)</h4>
+    <p>
+        Asymmetric encryption uses a pair of keys: a public key for encryption and a private key for decryption. RSA is the most well-known asymmetric encryption algorithm. The statistical property of RSA is that the ciphertext has no obvious relationship to the plaintext and is computationally difficult to decrypt without the private key. Its security relies on the difficulty of factoring large prime numbers.
+    </p>
+    
+    <h4>5. Stream Ciphers (e.g., RC4)</h4>
+    <p>
+        Stream ciphers encrypt plaintext one bit or byte at a time, typically by combining it with a pseudorandom stream of bits (keystream). Statistical properties include resistance to frequency analysis, but weak implementations or poor keystream generation can introduce vulnerabilities. When the keystream repeats or is predictable, ciphertext may become vulnerable to attacks.
+    </p>
+    
+    <h4>Statistical Properties of Strong Encryption</h4>
+    <p>
+        The effectiveness of an encryption method is often determined by its ability to obscure statistical properties of the plaintext. Strong encryption schemes aim to:
+    </p>
+    <ul>
+        <li>Ensure ciphertext appears random and unrelated to the plaintext distribution.</li>
+        <li>Minimize any patterns or correlations that could be exploited by attackers (e.g., frequency analysis, known-plaintext attacks).</li>
+        <li>Provide resistance against cryptanalysis techniques, ensuring that breaking the encryption requires significant computational effort.</li>
+    </ul>
+</section>
+
+
+
+    <section id="practice">
+        <div class="theory-header">
+            <h2>Practice</h2>
+            <a class="go-practice" href="#theory">Go to Theory</a>
+        </div>
+
+        <h3>Part 1</h3>
+        <p>
+            Following the same scheme of HMWK 7 compute the distribution of the sampling variance ("corrected" or not). Determine the distribution of the variances of the samples, and its mean and variance. Discussing the observed relationship with the mean and variance of the parent (theoretical) distribution.
+        </p>
+
+        <h3>Application's Key Features</h3>
+<ul>
+    <li><strong>Parent Distribution</strong>: Defines a discrete probability distribution with specific probabilities (e.g., 0.2, 0.3, 0.5) for values (0, 1, 2) used to generate random samples.</li>
+    <li><strong>Sampling Process</strong>: Generates m random samples, each of size n, and computes the variance for each sample. Users can choose corrected (Bessel's correction) or uncorrected variance.</li>
+    <li><strong>Variance Calculation</strong>: Computes the sample variance (corrected or uncorrected), the mean of sample variances, and the variance of those variances. It also calculates the theoretical variance of the parent distribution.</li>
+    <li><strong>Plotting</strong>: Visualizes the distribution of sample variances using a bar chart. The horizontal axis represents bins of variance values, while the vertical axis represents the frequency of occurrences in each bin.</li>
+    <li><strong>User Interface</strong>: Includes TextBoxes for user input (number of samples, sample size, corrected variance option), Labels for displaying computed statistics, and a PlotView for displaying the variance distribution chart.</li>
+</ul>
+
+        
+        <p></p>
+        
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('simulationCode')">Show Code</button>
+<div id="simulationCode" style="display: none;">
+<pre>
+    private List<int> GenerateSample(int n)
+    {
+        var sample = new List<int>();
+        for (int i = 0; i < n; i++)
+        {
+            sample.Add(GenerateSingleEvent());
+        }
+        return sample;
+    }
+
+    private int GenerateSingleEvent()
+    {
+        double r = random.NextDouble();
+        double cumulative = 0.0;
+
+        for (int i = 0; i < probabilities.Count; i++)
+        {
+            cumulative += probabilities[i];
+            if (r < cumulative)
+            {
+                return i;
+            }
+        }
+        return probabilities.Count - 1;
+    }
+
+    private double SampleVariance(List<int> sample, bool corrected = true)
+    {
+        double mean = sample.Average();
+        double variance = sample.Sum(x => Math.Pow(x - mean, 2));
+        return corrected ? variance / (sample.Count - 1) : variance / sample.Count;
+    }
+
+    private double Variance(List<double> values)
+    {
+        double mean = values.Average();
+        return values.Sum(v => Math.Pow(v - mean, 2)) / (values.Count - 1);
+    }
+
+    private double TheoreticalVariance()
+    {
+        double mean = Enumerable.Range(0, probabilities.Count)
+                                .Select(i => i * probabilities[i])
+                                .Sum();
+        return Enumerable.Range(0, probabilities.Count)
+                        .Select(i => probabilities[i] * Math.Pow(i - mean, 2))
+                        .Sum();
+    }
+
+    private void UpdatePlot(List<double> sampleVariances)
+    {
+        plotModel.Series.Clear();
+
+        int numBins = 20;
+        double min = sampleVariances.Min();
+        double max = sampleVariances.Max();
+        double binWidth = (max - min) / numBins;
+
+        // Calcolo delle frequenze
+        double[] bins = new double[numBins];
+        foreach (var variance in sampleVariances)
+        {
+            int binIndex = (int)((variance - min) / binWidth);
+            if (binIndex == numBins) binIndex--; // Gestione casi limite
+            bins[binIndex]++;
+        }
+
+        // Crea intervalli di varianza come categorie
+        var varianceCategories = new List<string>();
+        for (int i = 0; i < numBins; i++)
+        {
+            double start = min + i * binWidth;
+            double end = start + binWidth;
+            varianceCategories.Add($"{start:F2} - {end:F2}");
+        }
+
+        // Configura l'asse CategoryAxis con gli intervalli
+        var categoryAxis = plotModel.Axes.OfType<OxyPlot.Axes.CategoryAxis>().First();
+        categoryAxis.ItemsSource = varianceCategories;
+
+        // Popola la serie Bar con le frequenze
+        var barSeries = new BarSeries
+        {
+            Title = "Sampling Variance Distribution",
+            StrokeColor = OxyColors.Black,
+            StrokeThickness = 1,
+            FillColor = OxyColor.FromRgb(30, 144, 255)
+        };
+
+        for (int i = 0; i < numBins; i++)
+        {
+            barSeries.Items.Add(new OxyPlot.Series.BarItem { Value = bins[i] });
+        }
+
+        plotModel.Series.Add(barSeries);
+
+        // Aggiorna il grafico
+        plotModel.InvalidatePlot(true);
+    }
+</pre>
+</div>
+
+<h3>Final Result</h3>
+<p>
+    Here is a screenshot that shows the ouput of the application with m = 1000 and n = 30.
+</p>
+
+<a href="HW9_part1.png" data-lightbox="result">
+    <img src="HW9_part1.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
+
+<h3>Theoretical Reflections</h3>
+
+<h4>Sample Mean vs. Theoretical Mean:</h4>
+<ul>
+    <li>The sample mean is an unbiased estimator of the theoretical mean of the parent distribution.</li>
+    <li>As the sample size increases, the sample mean converges to the theoretical mean due to the <strong>Law of Large Numbers</strong>.</li>
+    <li>For small sample sizes, random fluctuations can cause the sample mean to deviate from the theoretical mean.</li>
+</ul>
+<br>
+<h4>Sample Variance vs. Theoretical Variance:</h4>
+<ul>
+    <li>The sample variance (when corrected by dividing by <em>n-1</em>) is an unbiased estimator of the theoretical variance of the parent distribution.</li>
+    <li>This correction compensates for the bias introduced by using the sample mean instead of the true mean in the variance calculation.</li>
+    <li>The uncorrected sample variance (dividing by <em>n</em>) underestimates the true variance, particularly for small sample sizes.</li>
+</ul>
+<br>
+<h4>Effect of Sample Size:</h4>
+<ul>
+    <li>Larger sample sizes reduce the variability of both the sample mean and sample variance, leading to more precise estimates of the theoretical values.</li>
+    <li>For small sample sizes, both the sample mean and variance are more prone to random fluctuations, resulting in greater discrepancies from the theoretical values.</li>
+</ul>
+
+
+
+
+<script>
+// JavaScript function to toggle visibility of code sections
+function toggleCode(id) {
+    var codeBlock = document.getElementById(id);
+    if (codeBlock.style.display === "none") {
+        codeBlock.style.display = "block";
+    } else {
+        codeBlock.style.display = "none";
+    }
+}
+</script>
+    
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
+</body>
+</html>
