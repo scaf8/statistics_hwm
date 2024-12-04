@@ -282,11 +282,8 @@
 
 
 <section id="theory2">
-    <div class="theory-header">
-        <h2>Theory (optional)</h2>
-    </div>
     
-    <h3>Encryption Methods and Statistical Properties</h3>
+    <h3>Encryption Methods and Statistical Properties (optional)</h3>
     <p>
         Encryption methods are fundamental to securing data in communications and storage. They transform plaintext into ciphertext, making the data unreadable without the correct decryption key. Below are the main encryption methods and their statistical properties:
     </p>
@@ -336,7 +333,7 @@
             <a class="go-practice" href="#theory">Go to Theory</a>
         </div>
 
-        <h3>Part 1</h3>
+        <h2>Part 1</h2>
         <p>
             Following the same scheme of HMWK 7 compute the distribution of the sampling variance ("corrected" or not). Determine the distribution of the variances of the samples, and its mean and variance. Discussing the observed relationship with the mean and variance of the parent (theoretical) distribution.
         </p>
@@ -489,6 +486,169 @@
     <li>Larger sample sizes reduce the variability of both the sample mean and sample variance, leading to more precise estimates of the theoretical values.</li>
     <li>For small sample sizes, both the sample mean and variance are more prone to random fluctuations, resulting in greater discrepancies from the theoretical values.</li>
 </ul>
+
+
+
+<br>
+
+<h2>Part 2 (optional)</h2>
+        
+
+        <h3>Application's Key Features</h3>
+<ul>
+    <li>
+        <strong>Substitution Cipher:</strong>
+        <ul>
+            <li>Implements a random one-to-one mapping of the alphabet (A-Z) to perform encryption.</li>
+            <li>Each letter in the plaintext is replaced with its corresponding substitute based on the generated key.</li>
+            <li>Demonstrates how substitution ciphers affect letter frequency, introducing randomness into the message.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Frequency Analysis:</strong>
+        <ul>
+            <li>Displays the frequency distribution of letters in the original (plaintext) and encrypted messages.</li>
+            <li>Illustrates how substitution ciphers disrupt the frequency patterns of the original text.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Entropy Calculation:</strong>
+        <ul>
+            <li>Computes the Shannon entropy of the plaintext and encrypted text.</li>
+            <li>Displays these values in separate text boxes, helping analyze how encryption increases message uncertainty.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Permutation Step:</strong>
+        <ul>
+            <li>Reverses the order of the encrypted text, adding an additional layer of encryption.</li>
+            <li>Highlights how reordering impacts frequency patterns and entropy without changing individual letter substitutions.</li>
+        </ul>
+    </li>
+    <li>
+        <strong>Decryption:</strong>
+        <ul>
+            <li>Enables reversing the substitution and permutation steps to retrieve the original plaintext.</li>
+            <li>Demonstrates the importance of knowing the encryption key for successful decryption.</li>
+        </ul>
+    </li>
+</ul>
+
+
+        
+        <p></p>
+        
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('simulationCode2')">Show Code</button>
+<div id="simulationCode2" style="display: none;">
+<pre>
+    private void GenerateSubstitutionKey()
+    {
+        substitutionKey = new Dictionary<char, char>();
+        reverseKey = new Dictionary<char, char>();
+        var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+        var shuffled = letters.OrderBy(_ => Guid.NewGuid()).ToArray();
+
+        for (int i = 0; i < letters.Length; i++)
+        {
+            substitutionKey[letters[i]] = shuffled[i];
+            reverseKey[shuffled[i]] = letters[i];
+        }
+    }
+
+    private string EncryptMessage(string message)
+    {
+        return new string(message.Select(ch =>
+        {
+            if (substitutionKey.ContainsKey(ch))
+                return substitutionKey[ch];
+            return ch; // Keep non-alphabetic characters unchanged
+        }).ToArray());
+    }
+
+    private Dictionary<char, int> CalculateFrequency(string message)
+    {
+        var frequency = new Dictionary<char, int>();
+        foreach (var ch in message)
+        {
+            if (char.IsLetter(ch))
+            {
+                if (!frequency.ContainsKey(ch))
+                    frequency[ch] = 0;
+                frequency[ch]++;
+            }
+        }
+        return frequency;
+    }
+
+    private double CalculateEntropy(Dictionary<char, int> frequency)
+    {
+        int total = frequency.Values.Sum();
+        return -frequency.Values
+            .Where(count => count > 0)
+            .Select(count => (double)count / total)
+            .Sum(p => p * Math.Log2(p));
+    }
+
+    private string DecryptMessage(string message)
+    {
+        return new string(message.Select(ch =>
+        {
+            if (reverseKey.ContainsKey(ch))
+                return reverseKey[ch];
+            return ch; // Keep non-alphabetic characters unchanged
+        }).ToArray());
+    }
+
+</pre>
+</div>
+
+<h3>Final Result</h3>
+<p>
+    Here is a screenshot that shows the ouput of the application.
+</p>
+
+<a href="HW9_part2.png" data-lightbox="result">
+    <img src="HW9_part2.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
+
+<h3>Theoretical Reflections</h3>
+
+<h4>1. How the Substitution Cipher Affects the Distribution of Letters</h4>
+<p>
+The substitution cipher changes the mapping of each letter in the plaintext to a corresponding letter in the ciphertext according to a predefined substitution key. This transformation alters the frequency distribution of the original letters while preserving the relative frequencies. For instance, if 'E' was the most frequent letter in the plaintext, its substitute (e.g., 'I' in this case) will appear most frequently in the ciphertext. This means the overall statistical patterns are retained, though obscured. However, such a cipher is vulnerable to frequency analysis, as the distribution of letter frequencies remains similar between the plaintext and ciphertext.
+</p>
+
+<h4>2. How Substitution Affects Uncertainty or Randomness in the Message</h4>
+<p>
+The substitution cipher does not significantly affect the entropy (measure of uncertainty or randomness) of the message, as seen in the output where both the original and encrypted messages have an entropy of <strong>3.4464</strong>. This is because substitution does not introduce new randomness; it simply remaps the letters while maintaining their frequency. Hence, the predictability of the message, based on letter distribution, remains relatively unchanged.
+</p>
+
+<h4>3. Effect of Reversing the Order of Letters</h4>
+<p>
+Reversing the order of letters does not change the frequency distribution or entropy of the message, as it only rearranges the sequence of characters. The frequency of individual letters (e.g., 'E' appearing 3 times in the original and encrypted texts) remains constant. However, reversing the message can obscure patterns like repeated bigrams or trigrams (e.g., common digraphs like 'TH' or 'ER'), making it marginally harder for attackers relying on such patterns. Yet, this technique alone does not add significant security since the underlying frequency distribution is unaltered.
+</p>
+
+<h4>4. Frequency Distribution Changes After Permutation</h4>
+<p>
+The permutation step (substitution in this case) remaps letters but keeps the overall frequency structure intact. This means statistical analysis can still be applied to deduce the substitution key by comparing the ciphertext's letter frequencies to standard frequency tables (e.g., the frequency of 'E' in English text). The significance of this change is that while it obscures the direct readability of the text, it does not eliminate statistical patterns that can aid cryptanalysis. This highlights the weakness of substitution ciphers when used without additional layers of encryption.
+</p>
+
+<h4>5. Entropy Considerations</h4>
+<p>
+The original and encrypted messages have the same entropy of <strong>3.4464</strong>, indicating no increase in randomness or unpredictability. This shows that the substitution cipher does not enhance the intrinsic security of the message against entropy-based attacks. A higher entropy would imply greater unpredictability and, therefore, increased security. For robust cryptographic systems, increasing entropy is essential to thwart statistical or brute-force attacks.
+</p>
+
+<h4>6. Contrast with RSA Concepts</h4>
+<p>
+Unlike substitution ciphers, RSA encryption relies on mathematical principles (e.g., modular arithmetic and prime factorization) and does not inherently preserve frequency distribution. RSA encrypts data at the level of blocks or numerical representations, which breaks statistical patterns. Additionally, RSA’s security lies in its key management and computational infeasibility of key recovery, not on altering letter frequencies. While substitution ciphers can be cracked with frequency analysis, RSA’s use of public-private key pairs ensures a high level of difficulty in decryption without the private key.
+</p>
+
+<h4>7. Final Thoughts on Entropy and Security</h4>
+<p>
+Entropy is a critical metric in cryptography as it quantifies the unpredictability of a message. Higher entropy in an encrypted message makes it harder for attackers to predict patterns or reconstruct plaintext. Substitution ciphers fail to increase entropy and thus provide minimal security. In contrast, modern encryption algorithms like AES or RSA aim to maximize entropy to obscure patterns and enhance resistance to cryptanalysis. A secure encryption scheme should strive to distribute entropy uniformly across the message, ensuring no discernible statistical patterns remain.
+</p>
+
 
 
 
