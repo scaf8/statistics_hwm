@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/lightbox2/dist/css/lightbox.min.css" rel="stylesheet">
+    <title>Statistics - Homework 10</title>
+    <style>
+        /* Font Google Import */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 1000px; /* Aumentato per dare più spazio */
+            width: 100%;
+            position: relative;
+        }
+
+        h1 {
+            color: #34495e;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #34495e;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h3,h4 {
+            margin-bottom: 10px; /* Spazio tra il titolo e il paragrafo */
+        }
+
+        p {
+            margin-bottom: 20px; /* Spazio tra un paragrafo e l'altro */
+        }
+
+        .theory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px; /* Spazio tra il titolo/link e il resto del contenuto */
+}
+
+.go-practice {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.go-practice:hover {
+    color: #2980b9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .theory-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .go-practice {
+        margin-top: 10px;
+    }
+}
+
+        ul, ol {
+            padding-left: 20px; /* Aggiunge padding per allineare con il paragrafo */
+        }
+
+        .index {
+            margin-bottom: 40px;
+        }
+
+        .index ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .index ul li {
+            margin: 10px 0;
+        }
+
+        .index ul li a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .index ul li a:hover {
+            color: #2980b9;
+        }
+
+        /* Link to home */
+        .back-home {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-home a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+
+        .back-home a:hover {
+            color: #2980b9;
+        }
+
+        /* Section styles */
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .back-home a {
+                font-size: 0.8em;
+            }
+        }
+
+        /* Styling for the Show Code button */
+        button {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 1em;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-bottom: 15px;
+        }
+
+        /* Button hover effect */
+        button:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        }
+
+        /* Add spacing between button and next paragraph */
+        button + p {
+        margin-top: 20px;
+        }
+
+        /* Style for the code block when it is shown */
+        pre {
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow-x: auto;
+        }
+
+        /* Code block indentation */
+        code {
+        font-family: 'Courier New', monospace;
+        font-size: 0.95em;
+        }
+
+    </style>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        },
+        svg: { fontCache: 'global' }
+    };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <!-- Link per tornare alla home -->
+        <div class="back-home">
+            <a href="index.html">&larr; <strong>Back to Home</strong></a>
+        </div>
+
+        <h1>Statistics - Homework 10</h1>
+
+<section id="theory">
+    <div class="theory-header">
+        <h2>Theory</h2>
+        <a class="go-practice" href="#practice">Go to Practice</a>
+    </div>
+    
+    <h3>General Concept of Sampling Mean and Variance</h3>
+    <p>
+        The sampling mean (\(\bar{X}\)) and variance (\(S^2\)) are descriptive statistics used to summarize a sample taken from a population.
+    </p>
+    <ul>
+        <li><b>Sampling Mean:</b> The arithmetic mean of the sample values:
+            \[
+            \bar{X} = \frac{1}{n} \sum_{i=1}^n X_i,
+            \]
+            where \(n\) is the sample size and \(X_i\) are the sample values.
+        </li>
+        <li><b>Sampling Variance:</b> A measure of the spread of sample values:
+            \[
+            S^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \bar{X})^2.
+            \]
+        </li>
+    </ul>
+    <p>
+        <b>Features of their distributions:</b>
+        <ul>
+            <li>The sampling mean is an unbiased estimator of the population mean (\(\mu\)). Its distribution approaches a normal distribution as \(n \to \infty\) (Central Limit Theorem).</li>
+            <li>The sampling variance is an unbiased estimator of the population variance (\(\sigma^2\)) but has a more complex distribution, often related to the chi-squared distribution.</li>
+        </ul>
+    </p>
+
+    <h3>General Idea of Lebesgue-Stieltjes Integration</h3>
+    <p>
+        The Lebesgue-Stieltjes integral generalizes the Riemann integral by allowing integration with respect to a function \(F(x)\), which does not need to be differentiable.
+    </p>
+    <ul>
+        <li><b>Definition:</b> For a real-valued function \(f(x)\) and a non-decreasing function \(F(x)\), the Lebesgue-Stieltjes integral is:
+            \[
+            \int_a^b f(x) \, dF(x),
+            \]
+            where \(dF(x)\) is interpreted as the infinitesimal change in \(F(x)\). This allows for integration with respect to functions that may have jumps or plateaus, such as cumulative distribution functions (CDFs).
+        </li>
+        <br>
+        <li><b>Applications in Probability Theory:</b></li>
+        
+        <ul>
+            <li><b>Connection with CDFs:</b> In probability, \(G(x)\) is typically the cumulative distribution function (CDF) of a random variable \(X\). The Lebesgue-Stieltjes integral provides a natural framework to compute expectations:
+                \[
+                \mathbb{E}[f(X)] = \int_{-\infty}^\infty f(x) \, dF_X(x),
+                \]
+                where \(F_X(x)\) is the CDF of \(X\).
+            </li>
+            <br>
+            <li><b>Generalization to Discrete and Continuous Cases:</b>
+                <ul>
+                    <li>For continuous random variables, the integral simplifies to the standard form:
+                        \[
+                        \mathbb{E}[f(X)] = \int_{-\infty}^\infty f(x) f_X(x) \, dx,
+                        \]
+                        where \(f_X(x)\) is the probability density function (PDF).
+                    </li>
+                    <li>For discrete random variables, the Lebesgue-Stieltjes integral sums over the probability mass function (PMF):
+                        \[
+                        \mathbb{E}[f(X)] = \sum_x f(x) P(X = x).
+                        \]
+                    </li>
+                </ul>
+                It is essential for defining probability measures and expectation in a unified framework.
+            </li>
+        </ul>
+        <br>
+        <li><b>Applications in Measure Theory:</b></li>
+        <ul>
+            <li><b>Unification of Integration:</b> Lebesgue-Stieltjes integration generalizes Riemann integration by integrating with respect to a measure \(\mu\) derived from \(G(x)\). This is crucial for analyzing measures beyond standard "length" measures, such as probability measures.</li>
+            <li><b>Handling Singular and Mixed Measures:</b> It supports singular distributions (e.g., Cantor distribution) and mixed distributions (e.g., a combination of discrete and continuous components), making it versatile for advanced probability.</li>
+            <li><b>Foundation for Modern Analysis:</b> It forms the basis for integration in spaces like \(L^p\) spaces, crucial for functional analysis, Fourier analysis, and other areas.</li>
+        </ul>
+    </ul>
+    
+</section>
+
+
+
+
+    <section id="practice">
+        <div class="theory-header">
+            <h2>Practice</h2>
+            <a class="go-practice" href="#theory">Go to Theory</a>
+        </div>
+
+        <h2>Part 1</h2>
+        <p>
+            Try compute numerically a Lebesgue integral and compare the same with the Riemann integral.
+        </p>
+
+        <h3>Application's Key Features</h3>
+<ul>
+    <li><strong>Function Selection</strong>: Offers predefined functions (e.g., Gaussian, Absolute Value, Exponential, etc.) for integration.
+    <li><strong>Integration Methods</strong>: Computes both Riemann and Lebesgue integrals numerically over user-defined bounds and intervals.
+    <li><strong>Dynamic Results</strong>: Displays computed integral values for both methods in real-time.
+    <li><strong>Graph Plotting</strong>: Visualizes the selected function using OxyPlot.
+    <li><strong>Interactive UI</strong>: Combines dropdown menus, input fields, and a compute button for user-friendly interaction.
+</ul>
+
+        
+        <p></p>
+        
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('simulationCode')">Show Code</button>
+<div id="simulationCode" style="display: none;">
+<pre>
+    private void UpdatePlotAndResults()
+    {
+        if (cmbFunction.SelectedItem == null)
+            return;
+
+        double lowerBound = double.Parse(txtLowerBound.Text);
+        double upperBound = double.Parse(txtUpperBound.Text);
+        int numIntervals = int.Parse(txtNumIntervals.Text);
+
+        // Get the selected function
+        string selectedFunction = cmbFunction.SelectedItem.ToString();
+        Func<double, double> f = functions[selectedFunction];
+
+        // Compute integrals
+        double riemannResult = ComputeRiemannIntegral(f, lowerBound, upperBound, numIntervals);
+        double lebesgueResult = ComputeLebesgueIntegral(f, lowerBound, upperBound, numIntervals);
+
+        // Display results
+        lblRiemannResult.Text = $"Riemann Integral: {riemannResult:F6}";
+        lblLebesgueResult.Text = $"Lebesgue Integral: {lebesgueResult:F6}";
+
+        // Plot the selected function
+        PlotFunction(f, lowerBound, upperBound, numIntervals);
+    }
+
+    private double ComputeRiemannIntegral(Func<double, double> f, double a, double b, int n)
+    {
+        double dx = (b - a) / n;
+        double sum = 0;
+        for (int i = 0; i < n; i++)
+        {
+            double x = a + i * dx;
+            sum += f(x) * dx;
+        }
+        return sum;
+    }
+
+    private double ComputeLebesgueIntegral(Func<double, double> f, double a, double b, int n)
+    {
+        double dx = (b - a) / n;
+        double[] xValues = Enumerable.Range(0, n).Select(i => a + i * dx).ToArray();
+        double[] fValues = xValues.Select(f).ToArray();
+
+        // Discretize the range of f(x) into buckets
+        double minValue = fValues.Min();
+        double maxValue = fValues.Max();
+        int buckets = Math.Min(100, n); // Use up to 100 buckets for better resolution
+        double bucketWidth = (maxValue - minValue) / buckets;
+
+        // Calculate measure for each bucket
+        double[] measures = new double[buckets];
+        for (int i = 0; i < n; i++)
+        {
+            int bucketIndex = (int)((fValues[i] - minValue) / bucketWidth);
+            if (bucketIndex >= 0 && bucketIndex < buckets)
+                measures[bucketIndex] += dx;
+        }
+
+        // Compute integral as sum of f(x) * measure for each bucket
+        double integral = 0;
+        for (int i = 0; i < buckets; i++)
+        {
+            double bucketValue = minValue + i * bucketWidth + bucketWidth / 2;
+            integral += bucketValue * measures[i];
+        }
+
+        return integral;
+    }
+</pre>
+</div>
+
+<h3>Final Result</h3>
+<p>
+    The following images show the output of the application with three different functions.
+</p>
+
+<a href="HW10_Gauss.png" data-lightbox="result">
+    <img src="HW10_Gauss.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
+
+<a href="HW10_Absolute.png" data-lightbox="result">
+    <img src="HW10_Absolute.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
+
+<a href="HW10_Exponential.png" data-lightbox="result">
+    <img src="HW10_Exponential.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
+
+<h3>Notes About the Output</h3>
+<p>
+    The difference between the Riemann and Lebesgue integrals is small, but it highlights the nuances in how the two methods approximate the integral:
+</p>
+<ul>
+    <li>
+        <strong>Riemann Integral:</strong> Computes the sum of areas of rectangles by evaluating the function 
+        <em>f(x)</em> at specific points within each subinterval. The accuracy depends heavily on the choice 
+        of points and the smoothness of the function over the intervals.
+    </li>
+    <li>
+        <strong>Lebesgue Integral:</strong> Groups values of <em>f(x)</em> into "buckets" based on their range 
+        (rather than subintervals of <em>x</em>) and calculates the contribution of these value ranges to the 
+        total integral. This method aligns more closely with how measures handle functions and is particularly 
+        effective for discontinuous or piecewise functions.
+    </li>
+</ul>
+
+
+
+<br>
+
+<h2>Part 2 (optional)</h2>
+
+<p>
+    Analyze publicly available SSL/TLS certificate data to identify potential security insights and patterns.
+</p>
+        
+
+<h3>Application's Key Features</h3>
+<ul>
+    <li><strong>Fetch SSL Certificate Data</strong>: Retrieves SSL/TLS certificate information for multiple domains via the <a href="https://crt.sh" target="_blank">crt.sh</a> API, with error handling and logging.</li>
+    <li><strong>Statistical Analysis of Certificates</strong>: Calculates mean and median validity duration, identifies short-lived (<180 days) and long-lived certificates (≥180 days), and groups validity periods by years.</li>
+    <li><strong>Distribution Analysis</strong>: Analyzes and groups certificates by issuers, hashing algorithms, and validity periods.</li>
+    <li><strong>Data Visualization</strong>:
+        <ul>
+            <li><strong>Bar Charts</strong>: Displays the distribution of certificate validity periods and hashing algorithms.</li>
+            <li><strong>Pie Chart</strong>: Shows issuer distribution with smaller categories grouped into "Others."</li>
+        </ul>
+    </li>
+    <li><strong>Interactive User Interface</strong>: Allows input of multiple domain names, displays results in a text box, and presents interactive charts.</li>
+</ul>
+
+
+
+        
+        <p></p>
+        
+<!-- Button to show/hide code -->
+<button onclick="toggleCode('simulationCode2')">Show Code</button>
+<div id="simulationCode2" style="display: none;">
+<pre>
+        private async System.Threading.Tasks.Task<List<Certificate>> FetchCertificatesAsync(string domain)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string url = string.Format(API_ENDPOINT, domain);
+                    var response = await client.GetAsync(url);
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+        
+                    Debug.WriteLine("DEBUG: Response for domain " + domain + ":\n" + responseBody);
+        
+                    var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                    return JsonSerializer.Deserialize<List<Certificate>>(responseBody, options);
+                }
+                catch (Exception ex)
+                {
+                    resultsTextBox.AppendText($"Error fetching data for {domain}: {ex.Message}\n");
+                    return new List<Certificate>();
+                }
+            }
+        }
+        
+        private void PerformAndDisplayAnalysis(List<Certificate> certificates)
+        {
+            // Calcola la durata media e mediana della validità
+            var validities = certificates.Select(c => (c.Not_after - c.Not_before).TotalDays).ToList();
+            double meanValidity = validities.Average();
+            double medianValidity = validities.OrderBy(v => v).ElementAt(validities.Count / 2);
+        
+            // Calcola la durata in anni per ciascun certificato
+            var validityYears = certificates.Select(c => (c.Not_after - c.Not_before).TotalDays / 365.0).ToList();
+        
+            // Raggruppa i certificati per intervallo di anni (1, 2, 3 anni, ecc.)
+            var validityDistribution = validityYears
+                .GroupBy(v => (int)Math.Ceiling(v))  // Arrotonda per e raggruppa per intervallo di anni
+                .Select(g => new { Years = g.Key, Count = g.Count() })
+                .OrderBy(g => g.Years)
+                .ToList();
+        
+            // Visualizza il grafico della distribuzione dei periodi di validità
+            DisplayBarChart(validityChart, "Validity Period Distribution", "Validity Period (Years)",
+                validityDistribution.Select(v => v.Years.ToString()).ToArray(),
+                validityDistribution.Select(v => (double)v.Count).ToArray());
+        
+            // Distribuzione degli issuer
+            var issuerDistribution = certificates.GroupBy(c => c.Issuer_name)
+                .Select(g => new { Issuer = g.Key, Count = g.Count() })
+                .OrderByDescending(g => g.Count)
+                .ToList();
+        
+            // Proporzione di certificati a vita breve vs lunga
+            int shortLivedCount = validities.Count(v => v < 180);
+            int longLivedCount = validities.Count(v => v >= 180);
+        
+            // **Distribuzione degli algoritmi di hashing**
+            var hashingAlgorithmDistribution = certificates.GroupBy(c => GetHashingAlgorithm(c))
+                .Select(g => new { Algorithm = g.Key, Count = g.Count() })
+                .OrderByDescending(g => g.Count)
+                .ToList();
+        
+            // Risultati testuali
+            resultsTextBox.Clear();
+            resultsTextBox.Font = new Font("Arial", 10, FontStyle.Regular);
+            resultsTextBox.AppendText($"Mean Validity Duration: {meanValidity:F2} days{Environment.NewLine}");
+            resultsTextBox.AppendText($"Median Validity Duration: {medianValidity:F2} days{Environment.NewLine}");
+            resultsTextBox.AppendText($"Short-Lived Certificates (<180 days): {shortLivedCount}{Environment.NewLine}");
+            resultsTextBox.AppendText($"Long-Lived Certificates (>=180 days): {longLivedCount}{Environment.NewLine}");
+            
+        
+            // Mostra i grafici
+            DisplayPieChart(issuerChart, "Certificate Issuer Distribution", issuerDistribution.Select(i => i.Issuer).ToArray(), issuerDistribution.Select(i => (double)i.Count).ToArray());
+        
+            // Grafico della distribuzione degli algoritmi di hashing
+            DisplayBarChart(hashingAlgorithmChart, "Hashing Algorithm Distribution", "Hashing Algorithm",
+                hashingAlgorithmDistribution.Select(h => h.Algorithm).ToArray(),
+                hashingAlgorithmDistribution.Select(h => (double)h.Count).ToArray());
+        }
+
+</pre>
+</div>
+
+<h3>Final Result</h3>
+<p>
+    Here is a screenshot that shows the ouput of the application with domains facebook.com, wikipedia.org and trenitalia.it.
+</p>
+
+<a href="HW10_SSL.png" data-lightbox="result">
+    <img src="HW10_SSL.png" style="max-width: 100%; height: auto; margin: 20px 0;">
+</a>
+
+<h3>Potential Security Insights and Patterns</h3>
+
+<h4>Certificate Issuer Distribution</h4>
+<ul>
+    <li><strong>Observation:</strong> A significant portion of certificates (47.69%) comes from a single issuer. While this might indicate a dominant, trusted CA (Certificate Authority), heavy reliance on a single CA might pose a centralized risk if that CA is compromised.</li>
+    <li><strong>Risk:</strong> Any mismanagement, compromise, or vulnerabilities in the primary CA (e.g., DigiCert) could impact many certificates, leading to widespread disruptions or security breaches.</li>
+    <li><strong>Pattern:</strong> The presence of multiple issuers indicates diversification, but the dominance of a few major players is evident.</li>
+</ul>
+<br>
+<h4>Validity Period Distribution</h4>
+<ul>
+    <li><strong>Observation:</strong> Most certificates have a validity period of 1–2 years, with very few lasting more than 3 years.</li>
+    <li><strong>Security Context:</strong> Shorter validity periods (1 year) align with best practices to limit exposure in case a certificate is compromised. Certificates lasting longer than 2 years could pose security risks if the private key is not well protected.</li>
+    <li><strong>Risk:</strong> A small number of certificates with validity periods beyond 3 years may indicate outdated practices or exceptions that increase security risks.</li>
+</ul>
+<br>
+<h4>Hashing Algorithm Distribution</h4>
+<ul>
+    <li><strong>Observation:</strong> The majority of certificates use "SHA-2" or its variants, which is considered secure. However, a noticeable number of certificates are categorized as "Unknown" or still use older algorithms such as "SHA-1".</li>
+    <li><strong>Risk:</strong> 
+        <ul>
+            <li>Certificates with "SHA-1" are deprecated and vulnerable to collision attacks, making them insecure. Their presence is a red flag.</li>
+            <li>"Unknown" algorithms might indicate parsing issues or the use of proprietary or non-standard cryptographic methods, potentially making them unreliable or risky.</li>
+        </ul>
+    </li>
+</ul>
+<br>
+<h4>Short-Lived vs. Long-Lived Certificates</h4>
+<ul>
+    <li><strong>Observation:</strong> A significant number (1691) of certificates are short-lived (&lt;180 days). This is positive, as short-lived certificates reduce exposure risks in case of private key leaks.</li>
+    <li><strong>Pattern:</strong> Long-lived certificates (2006) are still widely used, which may be acceptable for specific use cases but less ideal for high-security environments.</li>
+    <li><strong>Risk:</strong> Long-lived certificates might not align with current best practices and could expose systems to prolonged risk if not rotated properly.</li>
+</ul>
+
+
+
+
+
+
+<script>
+// JavaScript function to toggle visibility of code sections
+function toggleCode(id) {
+    var codeBlock = document.getElementById(id);
+    if (codeBlock.style.display === "none") {
+        codeBlock.style.display = "block";
+    } else {
+        codeBlock.style.display = "none";
+    }
+}
+</script>
+    
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>
+</body>
+</html>
